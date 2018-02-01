@@ -37,4 +37,8 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
     //RecyclerView 分割线
     compile 'com.choices.divider:RecyclerView_Divider:1.0.0'
+    implementation 'com.android.support:support-v4:27.0.2'
+    //沉浸式状态栏
+    compile 'com.github.niorgai:StatusBarCompat:2.1.3'
+
 }
