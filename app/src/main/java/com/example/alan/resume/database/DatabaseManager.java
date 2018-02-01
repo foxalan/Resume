@@ -11,7 +11,6 @@ import org.greenrobot.greendao.database.Database;
 /**
  * Function :
  * Modify Date : 2018/2/1
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -20,7 +19,6 @@ import org.greenrobot.greendao.database.Database;
 public class DatabaseManager {
 
     private DaoSession mDaoSession = null;
-    private DaoMaster mDaoMaster = null;
     private UserInfoDao mDao = null;
 
     private DatabaseManager() {
@@ -49,6 +47,4 @@ public class DatabaseManager {
     public final UserInfoDao getUseInfoDao() {
         return mDao;
     }
-
-
 }

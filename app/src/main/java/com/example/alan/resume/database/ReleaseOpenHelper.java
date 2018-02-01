@@ -9,7 +9,6 @@ import org.greenrobot.greendao.database.Database;
 /**
  * Function :
  * Modify Date : 2018/2/1
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
