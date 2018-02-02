@@ -11,9 +11,9 @@ package com.example.alan.resume.recycler;
 
 public enum MultipleFields {
     ITEM_TYPE,
-    USER,
-    EXPERIENCE,
-    EDUCATION,
-    PROJECT,
+    NAME,
+    AGE,
+    PHONE,
+    PIC,
     TITLE,
 }
