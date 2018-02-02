@@ -3,6 +3,7 @@ package com.example.alan.resume.application;
 import android.app.Application;
 
 import com.example.alan.resume.database.DatabaseManager;
+import com.example.alan.resume.entity.UserInfo;
 
 /**
  * Function :
@@ -21,5 +22,15 @@ public class ResumeApp extends Application {
 
         //初始化数据库
         DatabaseManager.getInstance().init(this);
+        UserInfo userInfo = UserInfo.builder()
+                .setId(1)
+                .setName("alan")
+                .setAge(23)
+                .setExperience("2")
+                .setLocation("wuhan")
+                .setPhone("18202710074")
+                .build();
+        DatabaseManager.getInstance().getUseInfoDao().insert(userInfo);
+
     }
 }

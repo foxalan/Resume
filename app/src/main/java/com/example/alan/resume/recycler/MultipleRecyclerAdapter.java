@@ -58,8 +58,14 @@ public class MultipleRecyclerAdapter extends
         final ArrayList<String> bannerImages;
         switch (holder.getItemViewType()) {
             case ItemType.USER:
-//                text = entity.getField(MultipleFields.TEXT);
-//                holder.setText(R.id.text_single, text);
+                String name = entity.getField(MultipleFields.NAME);
+                int age = entity.getField(MultipleFields.AGE);
+                String phone = entity.getField(MultipleFields.PHONE);
+                String pic = entity.getField(MultipleFields.PIC);
+                holder.setText(R.id.tv_user_name,name);
+                holder.setText(R.id.tv_user_age,String.valueOf(age));
+                holder.setText(R.id.tv_user_phone,phone);
+
                 break;
 //            case ItemType.IMAGE:
 //                imageUrl = entity.getField(MultipleFields.IMAGE_URL);
