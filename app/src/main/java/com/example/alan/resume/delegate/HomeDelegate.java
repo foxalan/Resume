@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.delegate.home.HomeDataConverter;
+import com.example.alan.resume.delegate.home.IHeadClickListener;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 import com.example.alan.resume.recycler.MultipleRecyclerAdapter;
 
@@ -24,7 +25,7 @@ import butterknife.BindView;
  * Whether Solve :
  */
 
-public class HomeDelegate extends ResumeDelegate {
+public class HomeDelegate extends ResumeDelegate implements IHeadClickListener{
 
     @BindView(R.id.ryc_resume)
     RecyclerView mRecyclerView;
@@ -49,5 +50,11 @@ public class HomeDelegate extends ResumeDelegate {
         final List<MultipleItemEntity> data = new HomeDataConverter().convert();
         MultipleRecyclerAdapter adapter = MultipleRecyclerAdapter.create(data);
         mRecyclerView.setAdapter(adapter);
+        adapter.setHeadClickListener(this);
+    }
+
+    @Override
+    public void onHeadClick(int itemType) {
+
     }
 }

@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.example.alan.resume.database.DatabaseManager;
 import com.example.alan.resume.entity.UserInfo;
+import com.joanzapata.iconify.Iconify;
+import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
  * Function :
@@ -32,5 +34,7 @@ public class ResumeApp extends Application {
                 .build();
         DatabaseManager.getInstance().getUseInfoDao().insert(userInfo);
 
+        //设置字体
+        Iconify.with(new FontAwesomeModule());
     }
 }

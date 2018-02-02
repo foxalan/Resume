@@ -4,12 +4,13 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.example.alan.resume.R;
+import com.example.alan.resume.delegate.home.IHeadClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *Created by 傅令杰
+ * @author Alan
  */
 
 public class MultipleRecyclerAdapter extends
@@ -18,6 +19,12 @@ public class MultipleRecyclerAdapter extends
     protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
         init();
+    }
+
+    private IHeadClickListener iHeadClickListener;
+
+    public void setHeadClickListener(IHeadClickListener iHeadClickListener) {
+        this.iHeadClickListener = iHeadClickListener;
     }
 
     public static MultipleRecyclerAdapter create(List<MultipleItemEntity> data) {
@@ -52,12 +59,23 @@ public class MultipleRecyclerAdapter extends
     }
 
     @Override
-    protected void convert(MultipleViewHolder holder, MultipleItemEntity entity) {
+    protected void convert(final MultipleViewHolder holder, MultipleItemEntity entity) {
         final String text;
         final String imageUrl;
         final ArrayList<String> bannerImages;
+        View view = holder.getView(R.id.rl_selected);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (iHeadClickListener!= null){
+                    iHeadClickListener.onHeadClick(holder.getItemViewType());
+                }
+            }
+        });
+
         switch (holder.getItemViewType()) {
             case ItemType.USER:
+
                 String name = entity.getField(MultipleFields.NAME);
                 int age = entity.getField(MultipleFields.AGE);
                 String phone = entity.getField(MultipleFields.PHONE);
@@ -65,6 +83,7 @@ public class MultipleRecyclerAdapter extends
                 holder.setText(R.id.tv_user_name,name);
                 holder.setText(R.id.tv_user_age,String.valueOf(age));
                 holder.setText(R.id.tv_user_phone,phone);
+
 
                 break;
 //            case ItemType.IMAGE:
