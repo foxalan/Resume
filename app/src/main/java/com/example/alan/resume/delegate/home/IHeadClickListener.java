@@ -12,7 +12,7 @@ package com.example.alan.resume.delegate.home;
 public interface IHeadClickListener {
     /**
      * 顶部的点击事件
-     * @param ItemType
+     * @param itemType
      */
     void onHeadClick(int itemType);
 }

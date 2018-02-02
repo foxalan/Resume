@@ -24,6 +24,7 @@
             android:layout_height="match_parent" />
 
         <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_head"
             android:layout_centerVertical="true"
             android:gravity="center"
             android:layout_marginStart="@dimen/dp_10"

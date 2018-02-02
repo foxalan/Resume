@@ -43,7 +43,6 @@ public class HomeDataConverter extends DataConverter {
             data.add(itemEntity);
         }
 
-
         return data;
     }
 }
