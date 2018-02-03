@@ -3,6 +3,7 @@ package com.example.alan.resume.delegate.detail;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -19,7 +20,6 @@ import butterknife.OnClick;
 /**
  * Function :
  * Modify Date : 2018/2/3
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -38,15 +38,37 @@ public class UserDetailDelegate extends ResumeDelegate {
     @BindView(R.id.bt_save_user_info)
     Button mButtonSave;
 
-    @OnClick({R.id.bt_save_user_info})
+    String mStrUserName;
+    String mStrUserPhone;
+    String mStrUserAge;
+    String mStrUserExp;
+
+    @OnClick({R.id.bt_save_user_info,R.id.iv_user_icon})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_save_user_info:
+                if (checkForm()){
+                    //todo
+                    UserInfo info = UserInfo.builder()
+                            .setId(0)
+                            .setName(mStrUserName)
+                            .setAge(Integer.parseInt(mStrUserAge))
+                            .setExperience(mStrUserExp)
+                            .setPhone(mStrUserPhone)
+                            .build();
+                    DatabaseManager.getInstance().getUseInfoDao().update(info);
+                    List<UserInfo> userInfoList = DatabaseManager.getInstance().getUseInfoDao().loadAll();
+                    for (UserInfo info1:userInfoList){
+                        Log.e("tang","==="+info1.toString());
+                    }
+                }
+                break;
+            case R.id.iv_user_icon:
+
                 break;
             default:
                 break;
         }
-
     }
 
 
@@ -72,6 +94,46 @@ public class UserDetailDelegate extends ResumeDelegate {
                 mInputUserExp.setText(userInfoList.get(0).getMExperience());
             }
         }
+    }
+
+    private int phoneCount = 11;
+
+    boolean checkForm() {
+        boolean isPass = true;
+        mStrUserAge = mInputUserAge.getText().toString();
+        mStrUserName = mInputUserName.getText().toString();
+        mStrUserPhone = mInputUserPhone.getText().toString();
+        mStrUserExp = mInputUserExp.getText().toString();
+
+        if (mStrUserName.isEmpty()) {
+            mInputUserName.setError("请输入Name");
+            isPass = false;
+        } else {
+            mInputUserName.setError(null);
+        }
+
+        if (mStrUserPhone.isEmpty() || mStrUserPhone.length() != phoneCount) {
+            mInputUserPhone.setError("请输入正确的电话号码");
+            isPass = false;
+        } else {
+            mInputUserPhone.setError(null);
+        }
+
+        if (mStrUserAge.isEmpty()) {
+            mInputUserAge.setError("请输入年龄");
+            isPass = false;
+        } else {
+            mInputUserAge.setError(null);
+        }
+
+        if (mStrUserExp.isEmpty()) {
+            mInputUserExp.setError("请输入Exp");
+            isPass = false;
+        } else {
+            mInputUserExp.setError(null);
+        }
+
+        return isPass;
 
     }
 }

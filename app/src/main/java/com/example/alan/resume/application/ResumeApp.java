@@ -26,6 +26,7 @@ public class ResumeApp extends Application {
         //初始化数据库
         DatabaseManager.getInstance().init(this);
         UserInfo userInfo = UserInfo.builder()
+                .setId(0)
                 .setName("alan")
                 .setAge(23)
                 .setExperience("2")

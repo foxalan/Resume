@@ -2,6 +2,7 @@ package com.example.alan.resume.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 /**
  * Function :
@@ -15,6 +16,7 @@ import org.greenrobot.greendao.annotation.Generated;
 public class ProjectInfo {
 
 
+    @Id
     private long mId;
     private String mStartTime;
     private String mEndTime;

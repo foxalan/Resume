@@ -2,6 +2,7 @@ package com.example.alan.resume.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 /**
  * Function :
@@ -15,6 +16,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class UserInfo {
 
+    @Id
     private long mId;
     private String mPicPath;
     private String mName;
@@ -149,4 +151,16 @@ public class UserInfo {
         this.mLocation = mLocation;
     }
 
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "mId=" + mId +
+                ", mPicPath='" + mPicPath + '\'' +
+                ", mName='" + mName + '\'' +
+                ", mAge=" + mAge +
+                ", mPhone='" + mPhone + '\'' +
+                ", mExperience='" + mExperience + '\'' +
+                ", mLocation='" + mLocation + '\'' +
+                '}';
+    }
 }
