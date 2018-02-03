@@ -16,7 +16,7 @@ import org.greenrobot.greendao.annotation.Id;
 public class ProjectInfo {
 
 
-    @Id
+    @Id(autoincrement = true)
     private long mId;
     private String mStartTime;
     private String mEndTime;

@@ -26,14 +26,24 @@ public class ResumeApp extends Application {
         //初始化数据库
         DatabaseManager.getInstance().init(this);
         UserInfo userInfo = UserInfo.builder()
-                .setId(0)
+
                 .setName("alan")
                 .setAge(23)
                 .setExperience("2")
                 .setLocation("wuhan")
                 .setPhone("18202710074")
                 .build();
+        UserInfo userInfo2 = UserInfo.builder()
+                .setId(10)
+                .setName("alan2")
+                .setAge(234)
+                .setExperience("12")
+                .setLocation("wuhan1")
+                .setPhone("182027100741")
+                .build();
         DatabaseManager.getInstance().getUseInfoDao().insert(userInfo);
+
+        DatabaseManager.getInstance().getUseInfoDao().insert(userInfo2);
 
         ProjectInfo projectInfo = ProjectInfo.builder()
                 .setId(1)

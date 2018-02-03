@@ -16,7 +16,7 @@ import org.greenrobot.greendao.annotation.Id;
 @Entity
 public class UserInfo {
 
-    @Id
+    @Id(autoincrement = true)
     private long mId;
     private String mPicPath;
     private String mName;

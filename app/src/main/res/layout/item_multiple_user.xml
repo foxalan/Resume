@@ -152,15 +152,17 @@
                     android:orientation="horizontal"
                     android:padding="5dp"
                     android:gravity="center_vertical"
-                    android:background="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
 
                     <com.joanzapata.iconify.widget.IconTextView
-                        android:layout_alignParentEnd="true"
-                        android:text="{fa-chevron-right}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+
+                        android:text="{fa-mobile}"
+                        android:layout_width="15sp"
+                        android:textSize="17sp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/holo_orange_light"
+                        android:layout_height="15dp" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_marginStart="@dimen/dp_4"
@@ -177,15 +179,16 @@
                     android:orientation="horizontal"
                     android:padding="5dp"
                     android:gravity="center_vertical"
-                    android:background="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
 
                     <com.joanzapata.iconify.widget.IconTextView
-                        android:layout_alignParentEnd="true"
-                        android:text="{fa-chevron-right}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="{fa-at}"
+                        android:layout_width="15dp"
+                        android:textSize="12sp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/holo_orange_light"
+                        android:layout_height="15dp" />
 
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_marginStart="@dimen/dp_4"
@@ -201,15 +204,16 @@
                     android:orientation="horizontal"
                     android:padding="5dp"
                     android:gravity="center_vertical"
-                    android:background="@color/colorAccent"
                     android:layout_width="match_parent"
                     android:layout_height="30dp">
 
                     <com.joanzapata.iconify.widget.IconTextView
-                        android:layout_alignParentEnd="true"
-                        android:text="{fa-chevron-right}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:text="{fa-bullseye}"
+                        android:layout_width="15dp"
+                        android:textSize="12sp"
+                        android:gravity="center_vertical"
+                        android:textColor="@android:color/holo_orange_light"
+                        android:layout_height="15dp"/>
 
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_marginStart="@dimen/dp_4"
