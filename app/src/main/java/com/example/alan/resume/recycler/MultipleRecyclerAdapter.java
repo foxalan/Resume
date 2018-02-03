@@ -86,13 +86,12 @@ public class MultipleRecyclerAdapter extends
 
 
                 break;
-//            case ItemType.IMAGE:
-//                imageUrl = entity.getField(MultipleFields.IMAGE_URL);
-//                Glide.with(mContext)
-//                        .load(imageUrl)
-//                        .apply(RECYCLER_OPTIONS)
-//                        .into((ImageView) holder.getView(R.id.img_single));
-//                break;
+            case ItemType.PROJECT:
+                String title = entity.getField(MultipleFields.PORJECT_TITLE);
+                String context = entity.getField(MultipleFields.PROJECT_CONTEXT);
+                holder.setText(R.id.tv_project_title,title);
+                holder.setText(R.id.tv_project_context,context);
+                break;
 //            case ItemType.TEXT_IMAGE:
 //                text = entity.getField(MultipleFields.TEXT);
 //                imageUrl = entity.getField(MultipleFields.IMAGE_URL);

@@ -19,7 +19,6 @@ import butterknife.BindView;
 /**
  * Function :
  * Modify Date : 2018/2/1
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -56,5 +55,11 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener{
     @Override
     public void onHeadClick(int itemType) {
 
+    }
+
+    @Override
+    public boolean onBackPressedSupport() {
+
+        return super.onBackPressedSupport();
     }
 }

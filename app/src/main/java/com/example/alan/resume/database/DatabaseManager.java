@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.alan.resume.entity.DaoMaster;
 import com.example.alan.resume.entity.DaoSession;
+import com.example.alan.resume.entity.ProjectInfoDao;
 import com.example.alan.resume.entity.UserInfoDao;
 
 import org.greenrobot.greendao.database.Database;
@@ -19,12 +20,15 @@ import org.greenrobot.greendao.database.Database;
 public class DatabaseManager {
 
     private DaoSession mDaoSession = null;
+    private DaoSession mDaoSessionProject = null;
     private UserInfoDao mDao = null;
+    private ProjectInfoDao mProjectInfoDao= null;
 
     private DatabaseManager() {
     }
 
     public DatabaseManager init(Context context) {
+
         initDao(context);
         return this;
     }
@@ -40,11 +44,20 @@ public class DatabaseManager {
     private void initDao(Context context) {
         final ReleaseOpenHelper helper = new ReleaseOpenHelper(context, "fast_ec.db");
         final Database db = helper.getWritableDb();
+        final Database dbPorject = helper.getWritableDb();
+
         mDaoSession = new DaoMaster(db).newSession();
+        mDaoSessionProject = new DaoMaster(dbPorject).newSession();
+
         mDao = mDaoSession.getUserInfoDao();
+        mProjectInfoDao = mDaoSessionProject.getProjectInfoDao();
     }
 
     public final UserInfoDao getUseInfoDao() {
         return mDao;
+    }
+
+    public ProjectInfoDao getProjectInfoDao() {
+        return mProjectInfoDao;
     }
 }
