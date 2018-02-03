@@ -37,6 +37,7 @@
             android:paddingTop="40dp">
 
             <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_user_icon"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
@@ -49,7 +50,22 @@
                 android:layout_marginTop="8dp">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/et_register_phone"
+                    android:id="@+id/et_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="姓名"
+                    android:inputType="text"
+                    />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_user_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="手机号码"
@@ -64,11 +80,11 @@
                 android:layout_marginTop="8dp">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/et_register_password"
+                    android:id="@+id/et_user_age"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="密码"
-                    android:inputType="textPassword"
+                    android:hint="年龄"
+                    android:inputType="number"
                     />
             </android.support.design.widget.TextInputLayout>
 
@@ -79,51 +95,27 @@
                 android:layout_marginTop="8dp">
 
                 <android.support.design.widget.TextInputEditText
-                    android:id="@+id/et_register_password_again"
+                    android:id="@+id/et_user_exp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="再输一次"
-                    android:inputType="textPassword"
+                    android:hint="EXP"
+                    android:inputType="text"
                     />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/et_register_prove"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="验证码"
-                    android:inputType="textPassword"
-                    />
-
-            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:padding="12dp"
                 android:textSize="16sp"
                 android:textColor="@android:color/white"
                 android:background="@android:color/holo_orange_dark"
-                android:id="@+id/bt_register"
-                android:text="注册"
+                android:id="@+id/bt_save_user_info"
+                android:text="保存"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tv_go_to_sign"
-                android:layout_marginTop="12dp"
-                android:text="已有帐号，点击登录"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
 
         </android.support.v7.widget.LinearLayoutCompat>
+
     </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
