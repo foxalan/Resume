@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.delegate.detail.UserDetailDelegate;
 import com.example.alan.resume.delegate.home.HomeDataConverter;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
+import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 import com.example.alan.resume.recycler.MultipleRecyclerAdapter;
 
@@ -19,16 +22,16 @@ import butterknife.BindView;
 /**
  * Function :
  * Modify Date : 2018/2/1
+ *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
  */
 
-public class HomeDelegate extends ResumeDelegate implements IHeadClickListener{
+public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
 
     @BindView(R.id.ryc_resume)
     RecyclerView mRecyclerView;
-
 
 
     @Override
@@ -54,7 +57,17 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener{
 
     @Override
     public void onHeadClick(int itemType) {
-
+        switch (itemType) {
+            case ItemType.USER:
+                Log.e("tang", "user");
+                start(new UserDetailDelegate());
+                break;
+            case ItemType.PROJECT:
+                Log.e("tang", "project");
+                break;
+            default:
+                break;
+        }
     }
 
     @Override

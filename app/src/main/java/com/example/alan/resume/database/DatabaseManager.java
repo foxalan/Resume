@@ -44,12 +44,13 @@ public class DatabaseManager {
     private void initDao(Context context) {
         final ReleaseOpenHelper helper = new ReleaseOpenHelper(context, "fast_ec.db");
         final Database db = helper.getWritableDb();
-        final Database dbPorject = helper.getWritableDb();
-
         mDaoSession = new DaoMaster(db).newSession();
-        mDaoSessionProject = new DaoMaster(dbPorject).newSession();
-
         mDao = mDaoSession.getUserInfoDao();
+
+
+        final ReleaseOpenHelper projectHelper = new ReleaseOpenHelper(context, "fast.db");
+        final Database dbProject = projectHelper.getWritableDb();
+        mDaoSessionProject = new DaoMaster(dbProject).newSession();
         mProjectInfoDao = mDaoSessionProject.getProjectInfoDao();
     }
 

@@ -2,12 +2,10 @@ package com.example.alan.resume.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.Id;
 
 /**
  * Function :
  * Modify Date : 2018/2/2
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -16,7 +14,7 @@ import org.greenrobot.greendao.annotation.Id;
 @Entity
 public class ProjectInfo {
 
-    @Id(autoincrement = true)
+
     private long mId;
     private String mStartTime;
     private String mEndTime;
