@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="schools">
+        <item>湖北大学</item>
+        <item>武汉大学</item>
+        <item>仙桃职业学校</item>
+    </string-array>
+    <string-array name="school_type">
+        <item>本科</item>
+        <item>专科</item>
+        <item>研究生</item>
+    </string-array>
+    <string-array name="pro">
+        <item>信息与计算科学</item>
+        <item>数理统计</item>
+    </string-array>
+</resources>
+
+

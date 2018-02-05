@@ -17,6 +17,22 @@ public class EduBean implements MultiItemEntity {
     private String mContext;
     private int mItemType;
 
+    public void setmId(int mId) {
+        this.mId = mId;
+    }
+
+    public void setmTitle(String mTitle) {
+        this.mTitle = mTitle;
+    }
+
+    public void setmContext(String mContext) {
+        this.mContext = mContext;
+    }
+
+    public void setmItemType(int mItemType) {
+        this.mItemType = mItemType;
+    }
+
     public int getmId() {
         return mId;
     }

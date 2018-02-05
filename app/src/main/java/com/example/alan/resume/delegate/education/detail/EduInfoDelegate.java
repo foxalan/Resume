@@ -20,7 +20,6 @@ import butterknife.BindView;
 /**
  * Function :
  * Modify Date : 2018/2/5
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -34,7 +33,9 @@ public class EduInfoDelegate extends ResumeDelegate {
     AppCompatTextView mTvSaveInfo;
 
     private List<EduBean> eduBeanList = new ArrayList<>();
-    private Dialog dateDialog,chooseDialog;
+    private Dialog dateDialog, chooseDialog;
+    private EduInfoAdapter adapter;
+    private List<String> listSchool, listSchoolType, listPro;
 
     @Override
     public Object getLayout() {
@@ -48,6 +49,22 @@ public class EduInfoDelegate extends ResumeDelegate {
     }
 
     private void initData() {
+
+        listSchool = new ArrayList<>();
+        for (String str : getContext().getResources().getStringArray(R.array.schools)) {
+            listSchool.add(str);
+        }
+
+        listSchoolType = new ArrayList<>();
+        for (String str : getContext().getResources().getStringArray(R.array.school_type)) {
+            listSchoolType.add(str);
+        }
+
+        listPro = new ArrayList<>();
+        for (String str : getContext().getResources().getStringArray(R.array.pro)) {
+            listPro.add(str);
+        }
+
         EduBean startTime = EduBean.builder()
                 .setItemType(ItemType.EDU_DETAIL_INFO)
                 .withId(0)
@@ -89,22 +106,27 @@ public class EduInfoDelegate extends ResumeDelegate {
     private void initRecyclerView() {
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
-        EduInfoAdapter adapter = new EduInfoAdapter(eduBeanList);
+        adapter = new EduInfoAdapter(eduBeanList);
         mRecyclerView.setAdapter(adapter);
+
         adapter.setInfoClickListener(new IEduInfoClickListener() {
             @Override
             public void onItemClick(int position) {
                 switch (position) {
                     case 0:
-                        showDateDialog(DateUtil.getDateForString("1990-01-01"));
+                        showDateDialog(DateUtil.getDateForString("2012-09-01"), 0);
                         break;
                     case 1:
+                        showDateDialog(DateUtil.getDateForString("2016-07-01"), 1);
                         break;
                     case 2:
+                        showChooseDialog(listSchool, 2);
                         break;
                     case 3:
+                        showChooseDialog(listSchoolType, 3);
                         break;
                     case 4:
+                        showChooseDialog(listPro, 4);
                         break;
                     default:
                         break;
@@ -114,13 +136,15 @@ public class EduInfoDelegate extends ResumeDelegate {
 
     }
 
-    private void showDateDialog(List<Integer> date) {
+    private void showDateDialog(List<Integer> date, final int position) {
         DatePickerDialog.Builder builder = new DatePickerDialog.Builder(getContext());
         builder.setOnDateSelectedListener(new DatePickerDialog.OnDateSelectedListener() {
             @Override
             public void onDateSelected(int[] dates) {
                 String date = dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
                         + (dates[2] > 9 ? dates[2] : ("0" + dates[2]));
+                eduBeanList.get(position).setmContext(date);
+                adapter.notifyItemChanged(position);
             }
 
             @Override
@@ -140,15 +164,16 @@ public class EduInfoDelegate extends ResumeDelegate {
         dateDialog.show();
     }
 
-    private void showChooseDialog(List<String> list) {
+    private void showChooseDialog(List<String> list, final int position) {
         DataPickerDialog.Builder builder = new DataPickerDialog.Builder(getContext());
         chooseDialog = builder.setData(list).setSelection(1).setTitle("取消")
                 .setOnDataSelectedListener(new DataPickerDialog.OnDataSelectedListener() {
                     @Override
-                    public void onDataSelected(String itemValue, int position) {
-
-
+                    public void onDataSelected(String itemValue, int p) {
+                        eduBeanList.get(position).setmContext(itemValue);
+                        adapter.notifyItemChanged(position);
                     }
+
                     @Override
                     public void onCancel() {
 
