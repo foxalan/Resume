@@ -15,4 +15,5 @@ public class ItemType {
     public static final int EXPERIENCE = 2;
     public static final int EDUCATION = 3;
     public static final int PROJECT = 4;
+    public static final int EDU_DETAIL=7;
 }
