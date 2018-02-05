@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.alan.resume.entity.DaoMaster;
 import com.example.alan.resume.entity.DaoSession;
+import com.example.alan.resume.entity.EducateInfoDao;
 import com.example.alan.resume.entity.ProjectInfoDao;
 import com.example.alan.resume.entity.UserInfoDao;
 
@@ -21,8 +22,13 @@ public class DatabaseManager {
 
     private DaoSession mDaoSession = null;
     private DaoSession mDaoSessionProject = null;
+
     private UserInfoDao mDao = null;
     private ProjectInfoDao mProjectInfoDao= null;
+
+    private EducateInfoDao mEducateInfoDao = null;
+    private DaoSession mDaoSessionEdu = null;
+
 
     private DatabaseManager() {
     }
@@ -42,6 +48,7 @@ public class DatabaseManager {
     }
 
     private void initDao(Context context) {
+
         final ReleaseOpenHelper helper = new ReleaseOpenHelper(context, "fast_ec.db");
         final Database db = helper.getWritableDb();
         mDaoSession = new DaoMaster(db).newSession();
@@ -52,6 +59,12 @@ public class DatabaseManager {
         final Database dbProject = projectHelper.getWritableDb();
         mDaoSessionProject = new DaoMaster(dbProject).newSession();
         mProjectInfoDao = mDaoSessionProject.getProjectInfoDao();
+
+        final ReleaseOpenHelper eduHelper = new ReleaseOpenHelper(context, "fast_edu.db");
+        final Database dbEdu = eduHelper.getWritableDb();
+        mDaoSessionEdu = new DaoMaster(dbEdu).newSession();
+        mEducateInfoDao = mDaoSessionEdu.getEducateInfoDao();
+
     }
 
     public final UserInfoDao getUseInfoDao() {
@@ -60,5 +73,9 @@ public class DatabaseManager {
 
     public ProjectInfoDao getProjectInfoDao() {
         return mProjectInfoDao;
+    }
+
+    public EducateInfoDao getEducateInfoDao() {
+        return mEducateInfoDao;
     }
 }

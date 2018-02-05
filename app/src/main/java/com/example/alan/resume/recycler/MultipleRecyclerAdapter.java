@@ -1,12 +1,12 @@
 package com.example.alan.resume.recycler;
 
+import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.example.alan.resume.R;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,14 +60,13 @@ public class MultipleRecyclerAdapter extends
 
     @Override
     protected void convert(final MultipleViewHolder holder, MultipleItemEntity entity) {
-        final String text;
-        final String imageUrl;
-        final ArrayList<String> bannerImages;
+
         View view = holder.getView(R.id.rl_selected);
+        AppCompatTextView mTvHead = holder.getView(R.id.tv_head);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (iHeadClickListener!= null){
+                if (iHeadClickListener != null) {
                     iHeadClickListener.onHeadClick(holder.getItemViewType());
                 }
             }
@@ -75,40 +74,35 @@ public class MultipleRecyclerAdapter extends
 
         switch (holder.getItemViewType()) {
             case ItemType.USER:
-
+                mTvHead.setText("基本信息");
                 String name = entity.getField(MultipleFields.NAME);
                 int age = entity.getField(MultipleFields.AGE);
                 String phone = entity.getField(MultipleFields.PHONE);
                 String pic = entity.getField(MultipleFields.PIC);
-                holder.setText(R.id.tv_user_name,name);
-                holder.setText(R.id.tv_user_age,String.valueOf(age));
-                holder.setText(R.id.tv_user_phone,phone);
-
-
+                holder.setText(R.id.tv_user_name, name);
+                holder.setText(R.id.tv_user_age, String.valueOf(age));
+                holder.setText(R.id.tv_user_phone, phone);
                 break;
             case ItemType.PROJECT:
-                String title = entity.getField(MultipleFields.PORJECT_TITLE);
-                String context = entity.getField(MultipleFields.PROJECT_CONTEXT);
-                holder.setText(R.id.tv_project_title,title);
-                holder.setText(R.id.tv_project_context,context);
+                mTvHead.setText("PROJECT");
+                String title = entity.getField(MultipleFields.PRO_TITLE);
+                String context = entity.getField(MultipleFields.PRO_CONTEXT);
+                holder.setText(R.id.tv_project_title, title);
+                holder.setText(R.id.tv_project_context, context);
                 break;
-//            case ItemType.TEXT_IMAGE:
-//                text = entity.getField(MultipleFields.TEXT);
-//                imageUrl = entity.getField(MultipleFields.IMAGE_URL);
-//                Glide.with(mContext)
-//                        .load(imageUrl)
-//                        .apply(RECYCLER_OPTIONS)
-//                        .into((ImageView) holder.getView(R.id.img_multiple));
-//                holder.setText(R.id.tv_multiple, text);
-//                break;
-//            case ItemType.BANNER:
-//                if (!mIsInitBanner) {
-//                    bannerImages = entity.getField(MultipleFields.BANNERS);
-//                    final ConvenientBanner<String> convenientBanner = holder.getView(R.id.banner_recycler_item);
-//                    BannerCreator.setDefault(convenientBanner, bannerImages, this);
-//                    mIsInitBanner = true;
-//                }
-//                break;
+            case ItemType.EDUCATION:
+                mTvHead.setText("EDUCATION");
+                String school = entity.getField(MultipleFields.EDU_SCHOOL);
+                String schoolType = entity.getField(MultipleFields.EDU_SCHOOL_TYPE);
+                String startTime = entity.getField(MultipleFields.EDU_START_TIME);
+                String endTime = entity.getField(MultipleFields.EDU_END_TIME);
+                String pro = entity.getField(MultipleFields.EDU_PRO);
+
+                holder.setText(R.id.tv_education_time, startTime + "-" + endTime);
+                holder.setText(R.id.tv_education_school,school);
+                holder.setText(R.id.tv_education_school_type, schoolType);
+                holder.setText(R.id.tv_education_school_pro,pro);
+                break;
             default:
                 break;
         }

@@ -9,6 +9,7 @@ import android.util.Log;
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.delegate.detail.UserDetailDelegate;
+import com.example.alan.resume.delegate.education.EducationDelegate;
 import com.example.alan.resume.delegate.home.HomeDataConverter;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
 import com.example.alan.resume.recycler.ItemType;
@@ -64,6 +65,9 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
                 break;
             case ItemType.PROJECT:
                 Log.e("tang", "project");
+                break;
+            case ItemType.EDUCATION:
+                start(new EducationDelegate(), SINGLETASK);
                 break;
             default:
                 break;

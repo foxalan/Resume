@@ -74,4 +74,54 @@ public class EducateInfo {
     }
 
 
+    public static Builder builder(){
+        return new Builder();
+    }
+
+    public static class Builder {
+
+        private long mId;
+        private String mStartTime;
+        private String mEndTime;
+        private String mSchool;
+        private String mSchoolType;
+        private String mPro;
+
+        public Builder setId(long mId) {
+            this.mId = mId;
+            return this;
+        }
+
+        public Builder setStartTime(String mStartTime) {
+            this.mStartTime = mStartTime;
+            return this;
+        }
+
+        public Builder setEndTime(String mEndTime) {
+            this.mEndTime = mEndTime;
+            return this;
+        }
+
+        public Builder setSchool(String mSchool) {
+            this.mSchool = mSchool;
+            return this;
+        }
+
+        public Builder setSchoolType(String mSchoolType) {
+            this.mSchoolType = mSchoolType;
+            return this;
+        }
+
+        public Builder setPro(String mPro) {
+            this.mPro = mPro;
+            return this;
+        }
+
+
+        public EducateInfo build() {
+            return new EducateInfo(mId, mStartTime, mEndTime, mSchool, mSchoolType,mPro);
+        }
+
+    }
+
 }

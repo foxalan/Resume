@@ -10,7 +10,7 @@ package com.example.alan.resume.delegate.education;
  */
 
 public enum  EduItemFields {
-    
+
     EDU_ITEM_SCHOOL,
     EDU_ITEM_START_TIME,
     EDU_ITEM_END_TIME,

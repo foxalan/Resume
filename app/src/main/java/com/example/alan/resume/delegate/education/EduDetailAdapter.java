@@ -27,10 +27,14 @@ public class EduDetailAdapter extends MultipleRecyclerAdapter {
 
     @Override
     protected void convert(MultipleViewHolder holder, MultipleItemEntity entity) {
-        super.convert(holder, entity);
+       
         switch (holder.getItemViewType()) {
             case ItemType.EDU_DETAIL:
-
+                String school = entity.getField(EduItemFields.EDU_ITEM_SCHOOL);
+                String startTime = entity.getField(EduItemFields.EDU_ITEM_START_TIME);
+                String endTime = entity.getField(EduItemFields.EDU_ITEM_END_TIME);
+                holder.setText(R.id.tv_edu_item_school, school);
+                holder.setText(R.id.tv_edu_item_time,startTime+"-"+endTime);
                 break;
             default:
                 break;

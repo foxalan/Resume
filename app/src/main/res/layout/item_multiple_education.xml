@@ -10,7 +10,8 @@
     android:layout_marginStart="40dp"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="20dp"
-    android:layout_marginEnd="40dp">
+    android:layout_marginEnd="40dp"
+    >
     <LinearLayout
 
         xmlns:android="http://schemas.android.com/apk/res/android"

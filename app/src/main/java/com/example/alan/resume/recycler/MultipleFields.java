@@ -18,8 +18,14 @@ public enum MultipleFields {
     PIC,
     TITLE,
     //project
-    START_TIME,
-    END_TIME,
-    PORJECT_TITLE,
-    PROJECT_CONTEXT,
+    PRO_START_TIME,
+    PRO_END_TIME,
+    PRO_TITLE,
+    PRO_CONTEXT,
+    //Edu
+    EDU_SCHOOL,
+    EDU_SCHOOL_TYPE,
+    EDU_START_TIME,
+    EDU_END_TIME,
+    EDU_PRO,
 }

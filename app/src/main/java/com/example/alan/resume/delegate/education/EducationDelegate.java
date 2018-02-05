@@ -1,10 +1,14 @@
 package com.example.alan.resume.delegate.education;
 
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.recycler.MultipleItemEntity;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -39,6 +43,12 @@ public class EducationDelegate extends ResumeDelegate {
 
     @Override
     public void onBindView() {
+
+        final LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(manager);
+        final List<MultipleItemEntity> data = new EduDetailConvert().convert();
+        EduDetailAdapter adapter = new EduDetailAdapter(data);
+        mRecyclerView.setAdapter(adapter);
 
     }
 }
