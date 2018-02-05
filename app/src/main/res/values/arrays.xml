@@ -8,11 +8,15 @@
     <string-array name="school_type">
         <item>本科</item>
         <item>专科</item>
-        <item>研究生</item>
+        <item>硕士</item>
     </string-array>
     <string-array name="pro">
         <item>信息与计算科学</item>
         <item>数理统计</item>
+        <item>计算机科学与技术</item>
+        <item>计算机网络</item>
+        <item>计算机应用</item>
+        <item>软件工程</item>
     </string-array>
 </resources>
 

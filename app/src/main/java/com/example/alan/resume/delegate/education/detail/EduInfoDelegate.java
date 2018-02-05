@@ -70,31 +70,31 @@ public class EduInfoDelegate extends ResumeDelegate {
         EduBean startTime = EduBean.builder()
                 .setItemType(ItemType.EDU_DETAIL_INFO)
                 .withId(0)
-                .withTitle("start time")
+                .withTitle("入学时间")
                 .withContext("")
                 .build();
         EduBean endTime = EduBean.builder()
                 .setItemType(ItemType.EDU_DETAIL_INFO)
                 .withId(1)
-                .withTitle("end time")
+                .withTitle("毕业时间")
                 .withContext("")
                 .build();
         EduBean school = EduBean.builder()
                 .setItemType(ItemType.EDU_DETAIL_INFO)
                 .withId(2)
-                .withTitle("school")
+                .withTitle("学校")
                 .withContext("")
                 .build();
         EduBean schoolType = EduBean.builder()
                 .setItemType(ItemType.EDU_DETAIL_INFO)
                 .withId(3)
-                .withTitle("school type")
+                .withTitle("学历")
                 .withContext("")
                 .build();
         EduBean pro = EduBean.builder()
                 .setItemType(ItemType.EDU_DETAIL_INFO)
                 .withId(4)
-                .withTitle("pro")
+                .withTitle("专业")
                 .withContext("")
                 .build();
         eduBeanList.add(startTime);
