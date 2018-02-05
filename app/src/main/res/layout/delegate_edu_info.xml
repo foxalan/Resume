@@ -29,19 +29,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:text="教育经历"
+                android:text="添加教育经历"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:gravity="center"
-                android:id="@+id/tv_education_add"
+                android:id="@+id/tv_education_info_save"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/dp_10"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="添加"
+                android:text="保存"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
         </RelativeLayout>
@@ -50,7 +50,7 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/ryc_edu"
+        android:id="@+id/ryc_edu_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp">
+
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:id="@+id/itv_asterisk"
+        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:layout_centerVertical="true"
+        android:text="{fa-asterisk}"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/itv_asterisk"
+        android:id="@+id/tv_edu_item_title"
+        android:textColor="@android:color/darker_gray"
+        android:text="湖北大学"
+        android:textSize="15sp"
+        android:layout_marginStart="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:layout_alignParentEnd="true"
+        android:id="@+id/itv_to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_centerVertical="true"
+        android:text="{fa-chevron-right}"
+        android:gravity="center_vertical"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_marginEnd="6dp"
+        android:hint="请选择"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/itv_to"
+        android:textSize="15sp"
+        android:id="@+id/tv_edu_item_info_context"
+        android:textColor="@android:color/darker_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
