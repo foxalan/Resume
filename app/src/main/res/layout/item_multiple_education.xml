@@ -57,7 +57,7 @@
                 <View
                     android:layout_gravity="center_horizontal"
                     android:background="@android:color/darker_gray"
-                    android:layout_width="2dp"
+                    android:layout_width="1dp"
                     android:layout_height="match_parent"/>
 
 
@@ -123,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" />
 
-                    <Vie
+                    <View
                         android:layout_marginStart="@dimen/dp_4"
                         android:background="@android:color/darker_gray"
                         android:layout_width="1dp"
@@ -141,10 +141,8 @@
 
                 </LinearLayout>
 
-
-
-
             </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>
