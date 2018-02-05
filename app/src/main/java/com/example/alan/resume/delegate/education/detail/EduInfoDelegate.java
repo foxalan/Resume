@@ -1,6 +1,7 @@
 package com.example.alan.resume.delegate.education.detail;
 
 import android.app.Dialog;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.picker.DataPickerDialog;
 import com.example.alan.resume.picker.DatePickerDialog;
 import com.example.alan.resume.picker.DateUtil;
+import com.example.alan.resume.recycler.BaseDecoration;
 import com.example.alan.resume.recycler.ItemType;
 
 import java.util.ArrayList;
@@ -107,6 +109,8 @@ public class EduInfoDelegate extends ResumeDelegate {
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
         adapter = new EduInfoAdapter(eduBeanList);
+        mRecyclerView.addItemDecoration
+                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         mRecyclerView.setAdapter(adapter);
 
         adapter.setInfoClickListener(new IEduInfoClickListener() {

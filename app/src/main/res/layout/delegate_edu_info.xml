@@ -5,6 +5,8 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
+
+        android:background="@android:color/holo_orange_light"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 
@@ -16,13 +18,12 @@
                 android:id="@+id/icon_goods_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="12dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
                 android:text="{fa-chevron-left}"
                 android:gravity="center_vertical"
-                android:textColor="@android:color/black"
-                android:textSize="26sp" />
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:gravity="center"
@@ -30,20 +31,20 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:text="添加教育经历"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/darker_gray"
                 android:textSize="20sp" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:gravity="center"
                 android:id="@+id/tv_education_info_save"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/dp_10"
-                android:layout_alignParentRight="true"
+                android:layout_marginEnd="15dp"
+                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="保存"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp" />
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
