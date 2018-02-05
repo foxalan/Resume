@@ -27,7 +27,7 @@ public class EduDetailAdapter extends MultipleRecyclerAdapter {
 
     @Override
     protected void convert(MultipleViewHolder holder, MultipleItemEntity entity) {
-       
+
         switch (holder.getItemViewType()) {
             case ItemType.EDU_DETAIL:
                 String school = entity.getField(EduItemFields.EDU_ITEM_SCHOOL);

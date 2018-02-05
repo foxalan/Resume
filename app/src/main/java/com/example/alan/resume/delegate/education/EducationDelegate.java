@@ -41,6 +41,8 @@ public class EducationDelegate extends ResumeDelegate {
         return R.layout.delegate_education_detail;
     }
 
+
+
     @Override
     public void onBindView() {
 
@@ -49,6 +51,7 @@ public class EducationDelegate extends ResumeDelegate {
         final List<MultipleItemEntity> data = new EduDetailConvert().convert();
         EduDetailAdapter adapter = new EduDetailAdapter(data);
         mRecyclerView.setAdapter(adapter);
+    //    mRecyclerView.addOnItemTouchListener();
 
     }
 }
