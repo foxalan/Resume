@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.alan.resume.entity.DaoMaster;
 import com.example.alan.resume.entity.DaoSession;
 import com.example.alan.resume.entity.EducateInfoDao;
+import com.example.alan.resume.entity.ExpInfoDao;
 import com.example.alan.resume.entity.ProjectInfoDao;
 import com.example.alan.resume.entity.UserInfoDao;
 
@@ -13,6 +14,7 @@ import org.greenrobot.greendao.database.Database;
 /**
  * Function :
  * Modify Date : 2018/2/1
+ *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -24,15 +26,18 @@ public class DatabaseManager {
     private DaoSession mDaoSessionProject = null;
 
     private UserInfoDao mDao = null;
-    private ProjectInfoDao mProjectInfoDao= null;
+    private ProjectInfoDao mProjectInfoDao = null;
 
     private EducateInfoDao mEducateInfoDao = null;
     private DaoSession mDaoSessionEdu = null;
 
+    private ExpInfoDao mExpDao = null;
+    private DaoSession mDaoSessionExp = null;
+
 
     private DatabaseManager() {
-    }
 
+    }
     public DatabaseManager init(Context context) {
 
         initDao(context);
@@ -54,7 +59,6 @@ public class DatabaseManager {
         mDaoSession = new DaoMaster(db).newSession();
         mDao = mDaoSession.getUserInfoDao();
 
-
         final ReleaseOpenHelper projectHelper = new ReleaseOpenHelper(context, "fast.db");
         final Database dbProject = projectHelper.getWritableDb();
         mDaoSessionProject = new DaoMaster(dbProject).newSession();
@@ -64,6 +68,11 @@ public class DatabaseManager {
         final Database dbEdu = eduHelper.getWritableDb();
         mDaoSessionEdu = new DaoMaster(dbEdu).newSession();
         mEducateInfoDao = mDaoSessionEdu.getEducateInfoDao();
+
+        final ReleaseOpenHelper expHelper = new ReleaseOpenHelper(context,"fast_exp.db");
+        final Database dbExp = expHelper.getWritableDb();
+        mDaoSessionExp = new DaoMaster(dbExp).newSession();
+        mExpDao = mDaoSessionExp.getExpInfoDao();
 
     }
 
@@ -77,5 +86,9 @@ public class DatabaseManager {
 
     public EducateInfoDao getEducateInfoDao() {
         return mEducateInfoDao;
+    }
+
+    public ExpInfoDao getExpDao() {
+        return mExpDao;
     }
 }
