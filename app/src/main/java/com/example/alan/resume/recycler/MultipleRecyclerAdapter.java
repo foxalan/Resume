@@ -9,7 +9,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.example.alan.resume.R;
 import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
-import com.example.alan.resume.delegate.exp.ExpItemAdapter;
+import com.example.alan.resume.delegate.exp.item.ExpItemAdapter;
 import com.example.alan.resume.entity.ExpInfo;
 
 import java.util.List;

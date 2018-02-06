@@ -1,9 +1,8 @@
 package com.example.alan.resume.delegate.home;
 
 import com.example.alan.resume.database.DatabaseManager;
-import com.example.alan.resume.entity.EducateInfo;
+import com.example.alan.resume.entity.EduInfo;
 import com.example.alan.resume.entity.ExpInfo;
-import com.example.alan.resume.entity.ProjectInfo;
 import com.example.alan.resume.entity.UserInfo;
 import com.example.alan.resume.recycler.DataConverter;
 import com.example.alan.resume.recycler.ItemType;
@@ -50,27 +49,27 @@ public class HomeDataConverter extends DataConverter {
             data.add(itemEntity);
         }
 
-        //项目经验
-        List<ProjectInfo> projectInfoList = DatabaseManager.getInstance().getProjectInfoDao().loadAll();
-        for (ProjectInfo info : projectInfoList) {
-            String title = info.getMTitle();
-            String context = info.getMContext();
-            String startTime = info.getMStartTime();
-            String endTime = info.getMEndTime();
-
-            MultipleItemEntity itemEntity = MultipleItemEntity.builder()
-                    .setItemType(ItemType.PROJECT)
-                    .setField(MultipleFields.PRO_START_TIME, startTime)
-                    .setField(MultipleFields.PRO_END_TIME, endTime)
-                    .setField(MultipleFields.PRO_TITLE, title)
-                    .setField(MultipleFields.PRO_CONTEXT, context)
-                    .build();
-            data.add(itemEntity);
-        }
+//        //项目经验
+//        List<ProInfo> proInfoList = DatabaseManager.getInstance().getProjectInfoDao().loadAll();
+//        for (ProInfo info : proInfoList) {
+//            String title = info.getMTitle();
+//            String context = info.getMContext();
+//            String startTime = info.getMStartTime();
+//            String endTime = info.getMEndTime();
+//
+//            MultipleItemEntity itemEntity = MultipleItemEntity.builder()
+//                    .setItemType(ItemType.PROJECT)
+//                    .setField(MultipleFields.PRO_START_TIME, startTime)
+//                    .setField(MultipleFields.PRO_END_TIME, endTime)
+//                    .setField(MultipleFields.PRO_TITLE, title)
+//                    .setField(MultipleFields.PRO_CONTEXT, context)
+//                    .build();
+//            data.add(itemEntity);
+//        }
 
         //学历
-        List<EducateInfo> educateInfoList = DatabaseManager.getInstance().getEducateInfoDao().loadAll();
-        for (EducateInfo info : educateInfoList) {
+        List<EduInfo> eduInfoList = DatabaseManager.getInstance().getEducateInfoDao().loadAll();
+        for (EduInfo info : eduInfoList) {
             String school = info.getMSchool();
             String startTime = info.getMStartTime();
             String endTime = info.getMEndTime();

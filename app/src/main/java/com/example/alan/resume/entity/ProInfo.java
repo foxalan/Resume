@@ -6,73 +6,76 @@ import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Function :
- * Modify Date : 2018/2/3
- *
+ * Modify Date : 2018/2/2
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
  */
 
 @Entity
-public class EducateInfo {
+public class ProInfo {
+
 
     @Id(autoincrement = true)
     private long mId;
     private String mStartTime;
     private String mEndTime;
-    private String mSchool;
-    private String mSchoolType;
-    private String mPro;
-    @Generated(hash = 1692653798)
-    public EducateInfo(long mId, String mStartTime, String mEndTime, String mSchool,
-            String mSchoolType, String mPro) {
+    private String mTitle;
+    private String mContext;
+
+    @Generated(hash = 419823608)
+    public ProInfo(long mId, String mStartTime, String mEndTime, String mTitle,
+            String mContext) {
         this.mId = mId;
         this.mStartTime = mStartTime;
         this.mEndTime = mEndTime;
-        this.mSchool = mSchool;
-        this.mSchoolType = mSchoolType;
-        this.mPro = mPro;
+        this.mTitle = mTitle;
+        this.mContext = mContext;
     }
-    @Generated(hash = 1136590377)
-    public EducateInfo() {
+
+    @Generated(hash = 1765891849)
+    public ProInfo() {
     }
+
     public long getMId() {
         return this.mId;
     }
+
     public void setMId(long mId) {
         this.mId = mId;
     }
+
     public String getMStartTime() {
         return this.mStartTime;
     }
+
     public void setMStartTime(String mStartTime) {
         this.mStartTime = mStartTime;
     }
+
     public String getMEndTime() {
         return this.mEndTime;
     }
+
     public void setMEndTime(String mEndTime) {
         this.mEndTime = mEndTime;
     }
-    public String getMSchool() {
-        return this.mSchool;
-    }
-    public void setMSchool(String mSchool) {
-        this.mSchool = mSchool;
-    }
-    public String getMSchoolType() {
-        return this.mSchoolType;
-    }
-    public void setMSchoolType(String mSchoolType) {
-        this.mSchoolType = mSchoolType;
-    }
-    public String getMPro() {
-        return this.mPro;
-    }
-    public void setMPro(String mPro) {
-        this.mPro = mPro;
+
+    public String getMTitle() {
+        return this.mTitle;
     }
 
+    public void setMTitle(String mTitle) {
+        this.mTitle = mTitle;
+    }
+
+    public String getMContext() {
+        return this.mContext;
+    }
+
+    public void setMContext(String mContext) {
+        this.mContext = mContext;
+    }
 
     public static Builder builder(){
         return new Builder();
@@ -83,9 +86,8 @@ public class EducateInfo {
         private long mId;
         private String mStartTime;
         private String mEndTime;
-        private String mSchool;
-        private String mSchoolType;
-        private String mPro;
+        private String mTitle;
+        private String mContext;
 
         public Builder setId(long mId) {
             this.mId = mId;
@@ -102,26 +104,21 @@ public class EducateInfo {
             return this;
         }
 
-        public Builder setSchool(String mSchool) {
-            this.mSchool = mSchool;
+        public Builder setTitle(String mTitle) {
+            this.mTitle = mTitle;
             return this;
         }
 
-        public Builder setSchoolType(String mSchoolType) {
-            this.mSchoolType = mSchoolType;
+        public Builder setContext(String mContext) {
+            this.mContext = mContext;
             return this;
         }
 
-        public Builder setPro(String mPro) {
-            this.mPro = mPro;
-            return this;
-        }
-
-
-        public EducateInfo build() {
-            return new EducateInfo(mId, mStartTime, mEndTime, mSchool, mSchoolType,mPro);
+        public ProInfo build() {
+            return new ProInfo(mId, mStartTime, mEndTime, mTitle, mContext);
         }
 
     }
+
 
 }

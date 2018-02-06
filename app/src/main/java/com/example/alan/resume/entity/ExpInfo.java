@@ -13,6 +13,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Whether Solve :
  */
 
+
 @Entity
 public class ExpInfo {
 
@@ -26,7 +27,7 @@ public class ExpInfo {
 
     @Generated(hash = 977480700)
     public ExpInfo(long id, String startTime, String endTime, String company,
-                   String job, String workDes) {
+            String job, String workDes) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;

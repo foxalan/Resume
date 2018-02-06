@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.example.alan.resume.entity.DaoMaster;
 import com.example.alan.resume.entity.DaoSession;
-import com.example.alan.resume.entity.EducateInfoDao;
+import com.example.alan.resume.entity.EduInfoDao;
 import com.example.alan.resume.entity.ExpInfoDao;
-import com.example.alan.resume.entity.ProjectInfoDao;
+import com.example.alan.resume.entity.ProInfoDao;
 import com.example.alan.resume.entity.UserInfoDao;
 
 import org.greenrobot.greendao.database.Database;
@@ -23,12 +23,12 @@ import org.greenrobot.greendao.database.Database;
 public class DatabaseManager {
 
     private DaoSession mDaoSession = null;
-    private DaoSession mDaoSessionProject = null;
+    private DaoSession mDaoSessionPro = null;
 
-    private UserInfoDao mDao = null;
-    private ProjectInfoDao mProjectInfoDao = null;
+    private UserInfoDao mDaoUser = null;
+    private ProInfoDao mProDao = null;
 
-    private EducateInfoDao mEducateInfoDao = null;
+    private EduInfoDao mEduInfoDao = null;
     private DaoSession mDaoSessionEdu = null;
 
     private ExpInfoDao mExpDao = null;
@@ -57,17 +57,17 @@ public class DatabaseManager {
         final ReleaseOpenHelper helper = new ReleaseOpenHelper(context, "fast_ec.db");
         final Database db = helper.getWritableDb();
         mDaoSession = new DaoMaster(db).newSession();
-        mDao = mDaoSession.getUserInfoDao();
+        mDaoUser = mDaoSession.getUserInfoDao();
 
         final ReleaseOpenHelper projectHelper = new ReleaseOpenHelper(context, "fast.db");
         final Database dbProject = projectHelper.getWritableDb();
-        mDaoSessionProject = new DaoMaster(dbProject).newSession();
-        mProjectInfoDao = mDaoSessionProject.getProjectInfoDao();
+        mDaoSessionPro = new DaoMaster(dbProject).newSession();
+        mProDao = mDaoSessionPro.getProInfoDao();
 
         final ReleaseOpenHelper eduHelper = new ReleaseOpenHelper(context, "fast_edu.db");
         final Database dbEdu = eduHelper.getWritableDb();
         mDaoSessionEdu = new DaoMaster(dbEdu).newSession();
-        mEducateInfoDao = mDaoSessionEdu.getEducateInfoDao();
+        mEduInfoDao = mDaoSessionEdu.getEduInfoDao();
 
         final ReleaseOpenHelper expHelper = new ReleaseOpenHelper(context,"fast_exp.db");
         final Database dbExp = expHelper.getWritableDb();
@@ -77,15 +77,15 @@ public class DatabaseManager {
     }
 
     public final UserInfoDao getUseInfoDao() {
-        return mDao;
+        return mDaoUser;
     }
 
-    public ProjectInfoDao getProjectInfoDao() {
-        return mProjectInfoDao;
+    public ProInfoDao getProjectInfoDao() {
+        return mProDao;
     }
 
-    public EducateInfoDao getEducateInfoDao() {
-        return mEducateInfoDao;
+    public EduInfoDao getEducateInfoDao() {
+        return mEduInfoDao;
     }
 
     public ExpInfoDao getExpDao() {

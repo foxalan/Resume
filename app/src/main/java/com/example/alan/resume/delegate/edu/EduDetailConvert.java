@@ -1,7 +1,7 @@
 package com.example.alan.resume.delegate.edu;
 
 import com.example.alan.resume.database.DatabaseManager;
-import com.example.alan.resume.entity.EducateInfo;
+import com.example.alan.resume.entity.EduInfo;
 import com.example.alan.resume.recycler.DataConverter;
 import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
@@ -24,8 +24,8 @@ public class EduDetailConvert extends DataConverter {
 
         ArrayList<MultipleItemEntity> data = new ArrayList<>();
 
-        List<EducateInfo> educateInfoList = DatabaseManager.getInstance().getEducateInfoDao().loadAll();
-        for (EducateInfo info:educateInfoList){
+        List<EduInfo> eduInfoList = DatabaseManager.getInstance().getEducateInfoDao().loadAll();
+        for (EduInfo info: eduInfoList){
             String school = info.getMSchool();
             String startTime = info.getMStartTime();
             String endTime = info.getMEndTime();

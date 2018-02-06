@@ -1,4 +1,4 @@
-package com.example.alan.resume.delegate.exp;
+package com.example.alan.resume.delegate.exp.item;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
