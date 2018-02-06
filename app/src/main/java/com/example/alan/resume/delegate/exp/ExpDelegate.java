@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.alan.resume.R;
@@ -81,6 +82,7 @@ public class ExpDelegate extends ResumeDelegate implements IExpInfoClickListener
     public void onItemClick(long id) {
         Bundle bundle = new Bundle();
         bundle.putLong("exp_id",id);
+        Log.e("tang","exp_id"+id);
         expDelegate.setArguments(bundle);
         start(new ExpModifyDelegate());
     }
