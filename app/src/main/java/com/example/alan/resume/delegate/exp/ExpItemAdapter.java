@@ -1,4 +1,4 @@
-package com.example.alan.resume.delegate.workexp;
+package com.example.alan.resume.delegate.exp;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
@@ -33,7 +33,7 @@ public class ExpItemAdapter extends RecyclerView.Adapter<ExpItemAdapter.MyViewHo
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_multiple_experience_item,parent,false);
+        View view = inflater.inflate(R.layout.item_multiple_exp_item,parent,false);
 
         return new MyViewHolder(view);
     }

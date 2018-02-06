@@ -1,4 +1,4 @@
-package com.example.alan.resume.delegate.education;
+package com.example.alan.resume.delegate.edu;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
-import com.example.alan.resume.delegate.education.detail.EduInfoDelegate;
+import com.example.alan.resume.delegate.edu.detail.EduInfoDelegate;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 
 import java.util.List;
@@ -23,7 +23,7 @@ import butterknife.OnClick;
  * Whether Solve :
  */
 
-public class EducationDelegate extends ResumeDelegate {
+public class EduDelegate extends ResumeDelegate {
 
     @BindView(R.id.ryc_edu)
     RecyclerView mRecyclerView;
@@ -41,7 +41,7 @@ public class EducationDelegate extends ResumeDelegate {
 
     @Override
     public Object getLayout() {
-        return R.layout.delegate_education_detail;
+        return R.layout.delegate_edu_detail;
     }
 
     @Override

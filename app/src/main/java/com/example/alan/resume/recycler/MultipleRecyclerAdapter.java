@@ -9,7 +9,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.example.alan.resume.R;
 import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
-import com.example.alan.resume.delegate.workexp.ExpItemAdapter;
+import com.example.alan.resume.delegate.exp.ExpItemAdapter;
 import com.example.alan.resume.entity.ExpInfo;
 
 import java.util.List;
@@ -51,9 +51,9 @@ public class MultipleRecyclerAdapter extends
     private void init() {
         //设置不同的item布局
         addItemType(ItemType.USER, R.layout.item_multiple_user);
-        addItemType(ItemType.EXPERIENCE, R.layout.item_multiple_experience);
-        addItemType(ItemType.PROJECT, R.layout.item_multiple_project);
-        addItemType(ItemType.EDUCATION, R.layout.item_multiple_education);
+        addItemType(ItemType.EXPERIENCE, R.layout.item_multiple_exp);
+        addItemType(ItemType.PROJECT, R.layout.item_multiple_pro);
+        addItemType(ItemType.EDUCATION, R.layout.item_multiple_edu);
 
         openLoadAnimation();
         //多次执行动画

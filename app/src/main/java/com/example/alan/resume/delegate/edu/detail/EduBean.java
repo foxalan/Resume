@@ -1,4 +1,4 @@
-package com.example.alan.resume.delegate.education.detail;
+package com.example.alan.resume.delegate.edu.detail;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 

@@ -1,6 +1,11 @@
-package com.example.alan.resume.delegate.workexp;
+package com.example.alan.resume.delegate.exp;
 
+import android.support.v7.widget.RecyclerView;
+
+import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
+
+import butterknife.BindView;
 
 /**
  * Function :
@@ -14,6 +19,8 @@ import com.example.alan.resume.base.ResumeDelegate;
 public class ExpDelegate extends ResumeDelegate {
 
 
+    @BindView(R.id.ryc_exp)
+    RecyclerView mRecyclerView;
 
     @Override
     public Object getLayout() {

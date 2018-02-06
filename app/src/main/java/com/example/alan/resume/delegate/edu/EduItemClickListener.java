@@ -1,4 +1,4 @@
-package com.example.alan.resume.delegate.education;
+package com.example.alan.resume.delegate.edu;
 
 import android.view.View;
 

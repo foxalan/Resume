@@ -8,9 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.delegate.detail.UserDetailDelegate;
-import com.example.alan.resume.delegate.education.EducationDelegate;
+import com.example.alan.resume.delegate.edu.EduDelegate;
 import com.example.alan.resume.delegate.home.HomeDataConverter;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
+import com.example.alan.resume.delegate.exp.ExpDelegate;
 import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 import com.example.alan.resume.recycler.MultipleRecyclerAdapter;
@@ -64,9 +65,10 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
             case ItemType.PROJECT:
                 break;
             case ItemType.EDUCATION:
-                start(new EducationDelegate(), SINGLETASK);
+                start(new EduDelegate(), SINGLETASK);
                 break;
             case ItemType.EXPERIENCE:
+                start(new ExpDelegate(),SINGLETASK);
                 break;
             default:
                 break;

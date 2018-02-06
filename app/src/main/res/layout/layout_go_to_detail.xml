@@ -27,7 +27,7 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:layout_marginStart="@dimen/dp_10"
-            android:layout_toRightOf="@id/ic_user"
+            android:layout_toEndOf="@id/ic_user"
             android:textSize="15sp"
             android:textColor="@android:color/black"
             android:textStyle="bold"
