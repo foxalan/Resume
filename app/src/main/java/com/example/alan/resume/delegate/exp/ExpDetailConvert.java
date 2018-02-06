@@ -1,5 +1,7 @@
 package com.example.alan.resume.delegate.exp;
 
+import android.util.Log;
+
 import com.example.alan.resume.database.DatabaseManager;
 import com.example.alan.resume.entity.ExpInfo;
 import com.example.alan.resume.recycler.DataConverter;
@@ -26,16 +28,17 @@ public class ExpDetailConvert extends DataConverter {
         ArrayList<MultipleItemEntity> data = new ArrayList<>();
 
         List<ExpInfo> expInfoList = DatabaseManager.getInstance().getExpDao().loadAll();
-        for (ExpInfo info: expInfoList){
+        Log.e("tang", "size" + expInfoList.size());
+        for (ExpInfo info : expInfoList) {
             String school = info.getCompany();
             String startTime = info.getStartTime();
             String endTime = info.getEndTime();
-
+            Log.e("tang", info.toString());
             MultipleItemEntity itemEntity = MultipleItemEntity.builder()
                     .setItemType(ItemType.EXP_DETAIL)
-                    .setField(ExpItemFields.EXP_ITEM_COMPANY,school)
-                    .setField(ExpItemFields.EXP_ITEM_START_TIME,startTime)
-                    .setField(ExpItemFields.EXP_ITEM_END_TIME,endTime)
+                    .setField(ExpItemFields.EXP_ITEM_COMPANY, school)
+                    .setField(ExpItemFields.EXP_ITEM_START_TIME, startTime)
+                    .setField(ExpItemFields.EXP_ITEM_END_TIME, endTime)
                     .build();
             data.add(itemEntity);
         }

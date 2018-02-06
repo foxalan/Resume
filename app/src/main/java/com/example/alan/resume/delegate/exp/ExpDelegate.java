@@ -28,7 +28,7 @@ public class ExpDelegate extends ResumeDelegate {
 
     @Override
     public Object getLayout() {
-        return null;
+        return R.layout.delegate_exp_detail;
     }
 
     @Override

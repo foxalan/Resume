@@ -1,5 +1,8 @@
 package com.example.alan.resume.delegate.exp;
 
+import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
+
 import com.example.alan.resume.R;
 import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
@@ -31,7 +34,10 @@ public class ExpDetailAdapter extends MultipleRecyclerAdapter {
                 String company = entity.getField(ExpItemFields.EXP_ITEM_COMPANY);
                 String startTime = entity.getField(ExpItemFields.EXP_ITEM_START_TIME);
                 String endTime = entity.getField(ExpItemFields.EXP_ITEM_END_TIME);
-                holder.setText(R.id.tv_exp_company_item, company);
+                Log.e("tang","company"+company);
+
+                AppCompatTextView textView = holder.getView(R.id.tv_exp_item_company);
+                textView.setText(company);
                 holder.setText(R.id.tv_exp_item_time,startTime+"-"+endTime);
                 break;
             default:

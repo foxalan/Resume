@@ -139,4 +139,15 @@ public class ExpInfo {
     }
 
 
+    @Override
+    public String toString() {
+        return "ExpInfo{" +
+                "id=" + id +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", company='" + company + '\'' +
+                ", job='" + job + '\'' +
+                ", workDes='" + workDes + '\'' +
+                '}';
+    }
 }
