@@ -62,6 +62,16 @@ public class ResumeApp extends Application {
 //                .build();
 //
 //        DatabaseManager.getInstance().getEducateInfoDao().insert(educateInfo);
+//        ExpInfo info = ExpInfo.builder()
+//                .setId(3)
+//                .withStartTime("2016-7")
+//                .withEndTime("2018-1")
+//                .withCompany("fxc")
+//                .withWorkDes("coder")
+//                .withWorkDes("just code maker")
+//                .build();
+//        DatabaseManager.getInstance().getExpDao().insert(info);
+        Resume.init(this);
 
         //设置字体
         Iconify.with(new FontAwesomeModule());

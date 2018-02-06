@@ -2,6 +2,7 @@ package com.example.alan.resume.delegate.home;
 
 import com.example.alan.resume.database.DatabaseManager;
 import com.example.alan.resume.entity.EducateInfo;
+import com.example.alan.resume.entity.ExpInfo;
 import com.example.alan.resume.entity.ProjectInfo;
 import com.example.alan.resume.entity.UserInfo;
 import com.example.alan.resume.recycler.DataConverter;
@@ -23,11 +24,15 @@ import java.util.List;
 
 public class HomeDataConverter extends DataConverter {
 
+    /**
+     * 查询数据库获取所有的数据
+     */
     @Override
     public ArrayList<MultipleItemEntity> convert() {
 
         ArrayList<MultipleItemEntity> data = new ArrayList<>();
 
+        //用户信息
         List<UserInfo> userInfoList = DatabaseManager.getInstance().getUseInfoDao().loadAll();
         for (UserInfo info : userInfoList) {
             String name = info.getMName();
@@ -45,6 +50,7 @@ public class HomeDataConverter extends DataConverter {
             data.add(itemEntity);
         }
 
+        //项目经验
         List<ProjectInfo> projectInfoList = DatabaseManager.getInstance().getProjectInfoDao().loadAll();
         for (ProjectInfo info : projectInfoList) {
             String title = info.getMTitle();
@@ -62,6 +68,7 @@ public class HomeDataConverter extends DataConverter {
             data.add(itemEntity);
         }
 
+        //学历
         List<EducateInfo> educateInfoList = DatabaseManager.getInstance().getEducateInfoDao().loadAll();
         for (EducateInfo info : educateInfoList) {
             String school = info.getMSchool();
@@ -76,10 +83,18 @@ public class HomeDataConverter extends DataConverter {
                     .setField(MultipleFields.EDU_SCHOOL_TYPE, schoolType)
                     .setField(MultipleFields.EDU_START_TIME, startTime)
                     .setField(MultipleFields.EDU_PRO, pro)
-                    .setField(MultipleFields.EDU_END_TIME,endTime)
+                    .setField(MultipleFields.EDU_END_TIME, endTime)
                     .build();
             data.add(itemEntity);
         }
+
+        //工作经验
+        List<ExpInfo> expInfoList = DatabaseManager.getInstance().getExpDao().loadAll();
+        MultipleItemEntity itemEntity = MultipleItemEntity.builder()
+                .setItemType(ItemType.EXPERIENCE)
+                .setField(MultipleFields.EXP_ALL, expInfoList)
+                .build();
+        data.add(itemEntity);
 
 
         return data;

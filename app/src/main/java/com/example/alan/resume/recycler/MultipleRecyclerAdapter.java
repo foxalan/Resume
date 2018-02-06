@@ -1,11 +1,16 @@
 package com.example.alan.resume.recycler;
 
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.example.alan.resume.R;
+import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
+import com.example.alan.resume.delegate.workexp.ExpItemAdapter;
+import com.example.alan.resume.entity.ExpInfo;
 
 import java.util.List;
 
@@ -15,6 +20,8 @@ import java.util.List;
 
 public class MultipleRecyclerAdapter extends
         BaseMultiItemQuickAdapter<MultipleItemEntity, MultipleViewHolder> {
+
+    private ExpItemAdapter expItemAdapter;
 
     protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
@@ -97,11 +104,18 @@ public class MultipleRecyclerAdapter extends
                 String startTime = entity.getField(MultipleFields.EDU_START_TIME);
                 String endTime = entity.getField(MultipleFields.EDU_END_TIME);
                 String pro = entity.getField(MultipleFields.EDU_PRO);
-
                 holder.setText(R.id.tv_education_time, startTime + "-" + endTime);
-                holder.setText(R.id.tv_education_school,school);
+                holder.setText(R.id.tv_education_school, school);
                 holder.setText(R.id.tv_education_school_type, schoolType);
-                holder.setText(R.id.tv_education_school_pro,pro);
+                holder.setText(R.id.tv_education_school_pro, pro);
+                break;
+            case ItemType.EXPERIENCE:
+                mTvHead.setText("EXP");
+                RecyclerView mRecyclerView = holder.getView(R.id.ryc_exp_item);
+                List<ExpInfo> expInfoList = entity.getField(MultipleFields.EXP_ALL);
+                expItemAdapter = new ExpItemAdapter(expInfoList, Resume.getApplicationContext());
+                mRecyclerView.setLayoutManager(new LinearLayoutManager(Resume.getApplicationContext()));
+                mRecyclerView.setAdapter(expItemAdapter);
                 break;
             default:
                 break;

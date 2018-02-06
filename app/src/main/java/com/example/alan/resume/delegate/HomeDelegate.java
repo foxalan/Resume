@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
@@ -60,14 +59,14 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
     public void onHeadClick(int itemType) {
         switch (itemType) {
             case ItemType.USER:
-                Log.e("tang", "user");
                 start(new UserDetailDelegate());
                 break;
             case ItemType.PROJECT:
-                Log.e("tang", "project");
                 break;
             case ItemType.EDUCATION:
                 start(new EducationDelegate(), SINGLETASK);
+                break;
+            case ItemType.EXPERIENCE:
                 break;
             default:
                 break;

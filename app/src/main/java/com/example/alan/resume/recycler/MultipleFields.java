@@ -28,4 +28,6 @@ public enum MultipleFields {
     EDU_START_TIME,
     EDU_END_TIME,
     EDU_PRO,
+    //EXP
+    EXP_ALL,
 }
