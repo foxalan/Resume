@@ -33,12 +33,15 @@ public class ExpDetailConvert extends DataConverter {
             String school = info.getCompany();
             String startTime = info.getStartTime();
             String endTime = info.getEndTime();
+            long id = info.getId();
+
             Log.e("tang", info.toString());
             MultipleItemEntity itemEntity = MultipleItemEntity.builder()
                     .setItemType(ItemType.EXP_DETAIL)
                     .setField(ExpItemFields.EXP_ITEM_COMPANY, school)
                     .setField(ExpItemFields.EXP_ITEM_START_TIME, startTime)
                     .setField(ExpItemFields.EXP_ITEM_END_TIME, endTime)
+                    .setField(ExpItemFields.EXP_ITEM_ID,id)
                     .build();
             data.add(itemEntity);
         }

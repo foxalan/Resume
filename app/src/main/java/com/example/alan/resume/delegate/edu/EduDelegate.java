@@ -30,7 +30,7 @@ public class EduDelegate extends ResumeDelegate {
     @BindView(R.id.ryc_edu)
     RecyclerView mRecyclerView;
 
-
+    List<MultipleItemEntity> data;
 
     @OnClick({R.id.tv_education_add})
     void onClick(View view) {
@@ -53,12 +53,11 @@ public class EduDelegate extends ResumeDelegate {
 
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
-        final List<MultipleItemEntity> data = new EduDetailConvert().convert();
-        EduDetailAdapter adapter = new EduDetailAdapter(data);
-        mRecyclerView.setAdapter(adapter);
         mRecyclerView.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
+        data = new EduDetailConvert().convert();
+        EduDetailAdapter adapter = new EduDetailAdapter(data);
+        mRecyclerView.setAdapter(adapter);
         //    mRecyclerView.addOnItemTouchListener();
-
     }
 }

@@ -30,6 +30,7 @@ public class EduDetailAdapter extends MultipleRecyclerAdapter {
 
         switch (holder.getItemViewType()) {
             case ItemType.EDU_DETAIL:
+
                 String school = entity.getField(EduItemFields.EDU_ITEM_SCHOOL);
                 String startTime = entity.getField(EduItemFields.EDU_ITEM_START_TIME);
                 String endTime = entity.getField(EduItemFields.EDU_ITEM_END_TIME);

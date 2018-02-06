@@ -34,10 +34,10 @@ public class DatabaseManager {
     private ExpInfoDao mExpDao = null;
     private DaoSession mDaoSessionExp = null;
 
-
     private DatabaseManager() {
 
     }
+
     public DatabaseManager init(Context context) {
 
         initDao(context);

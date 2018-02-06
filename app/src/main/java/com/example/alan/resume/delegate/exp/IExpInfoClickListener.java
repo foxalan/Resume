@@ -9,11 +9,6 @@ package com.example.alan.resume.delegate.exp;
  * Whether Solve :
  */
 
-public enum ExpItemFields {
-    EXP_ITEM_ID,
-    EXP_ITEM_START_TIME,
-    EXP_ITEM_END_TIME,
-    EXP_ITEM_COMPANY,
-    EXP_ITEM_JOB
-
+public interface IExpInfoClickListener {
+    void onItemClick(long id);
 }
