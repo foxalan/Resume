@@ -34,14 +34,14 @@ public class EduInfoAdapter extends BaseMultiItemQuickAdapter<EduBean, BaseViewH
 
     public EduInfoAdapter(List<EduBean> data) {
         super(data);
-        addItemType(ItemType.EDU_DETAIL_INFO, R.layout.item_edu_info);
+        addItemType(ItemType.DETAIL_INFO, R.layout.item_edu_info);
     }
 
 
     @Override
     protected void convert(BaseViewHolder helper, final EduBean item) {
         switch (helper.getItemViewType()) {
-            case ItemType.EDU_DETAIL_INFO:
+            case ItemType.DETAIL_INFO:
                 RelativeLayout relativeLayout = helper.getView(R.id.rl_edu_info);
                 relativeLayout.setOnClickListener(new View.OnClickListener() {
                     @Override

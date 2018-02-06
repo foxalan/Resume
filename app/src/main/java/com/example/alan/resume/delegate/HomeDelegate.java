@@ -23,7 +23,6 @@ import butterknife.BindView;
 /**
  * Function :
  * Modify Date : 2018/2/1
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -34,11 +33,21 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
     @BindView(R.id.ryc_resume)
     RecyclerView mRecyclerView;
 
+    private static HomeDelegate homeDelegate;
+
+    public static HomeDelegate getInstance() {
+        if (homeDelegate == null) {
+
+            homeDelegate = new HomeDelegate();
+        }
+        return homeDelegate;
+    }
 
     @Override
     public Object getLayout() {
         return R.layout.delegate_home;
     }
+
 
     @Override
     public void onBindView() {
@@ -68,7 +77,7 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
                 start(new EduDelegate(), SINGLETASK);
                 break;
             case ItemType.EXPERIENCE:
-                start(new ExpDelegate(),SINGLETASK);
+                start(new ExpDelegate(), SINGLETASK);
                 break;
             default:
                 break;

@@ -1,5 +1,6 @@
 package com.example.alan.resume.delegate.edu;
 
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.View;
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.delegate.edu.detail.EduInfoDelegate;
+import com.example.alan.resume.recycler.BaseDecoration;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 
 import java.util.List;
@@ -27,6 +29,8 @@ public class EduDelegate extends ResumeDelegate {
 
     @BindView(R.id.ryc_edu)
     RecyclerView mRecyclerView;
+
+
 
     @OnClick({R.id.tv_education_add})
     void onClick(View view) {
@@ -52,6 +56,8 @@ public class EduDelegate extends ResumeDelegate {
         final List<MultipleItemEntity> data = new EduDetailConvert().convert();
         EduDetailAdapter adapter = new EduDetailAdapter(data);
         mRecyclerView.setAdapter(adapter);
+        mRecyclerView.addItemDecoration
+                (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         //    mRecyclerView.addOnItemTouchListener();
 
     }

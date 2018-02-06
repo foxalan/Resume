@@ -1,13 +1,19 @@
-package com.example.alan.resume.delegate.edu.detail;
+package com.example.alan.resume.delegate.exp.detail;
 
 import android.app.Dialog;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.delegate.edu.detail.EduBean;
+import com.example.alan.resume.delegate.edu.detail.EduInfoAdapter;
+import com.example.alan.resume.delegate.edu.detail.IEduInfoClickListener;
+import com.example.alan.resume.delegate.exp.ExpDelegate;
 import com.example.alan.resume.picker.DataPickerDialog;
 import com.example.alan.resume.picker.DatePickerDialog;
 import com.example.alan.resume.picker.DateUtil;
@@ -18,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Function :
@@ -27,12 +34,27 @@ import butterknife.BindView;
  * Whether Solve :
  */
 
-public class EduInfoDelegate extends ResumeDelegate {
+public class ExpInfoDelegate extends ResumeDelegate {
 
-    @BindView(R.id.ryc_edu_add)
+    @BindView(R.id.ryc_exp_add)
     RecyclerView mRecyclerView;
-    @BindView(R.id.tv_education_info_save)
+    @BindView(R.id.tv_exp_info_save)
     AppCompatTextView mTvSaveInfo;
+
+    @OnClick({R.id.tv_exp_info_save,R.id.itv_exp_cancel})
+    void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tv_exp_info_save:
+
+                break;
+            case R.id.itv_exp_cancel:
+                Log.e("tang","onclick");
+                start(ExpDelegate.getInstance());
+                break;
+            default:
+                break;
+        }
+    }
 
     private List<EduBean> eduBeanList = new ArrayList<>();
     private Dialog dateDialog, chooseDialog;
@@ -41,7 +63,7 @@ public class EduInfoDelegate extends ResumeDelegate {
 
     @Override
     public Object getLayout() {
-        return R.layout.delegate_edu_info;
+        return R.layout.delegate_exp_info;
     }
 
     @Override
@@ -70,31 +92,31 @@ public class EduInfoDelegate extends ResumeDelegate {
         EduBean startTime = EduBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(0)
-                .withTitle("入学时间")
+                .withTitle("入职时间")
                 .withContext("")
                 .build();
         EduBean endTime = EduBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(1)
-                .withTitle("毕业时间")
+                .withTitle("离职时间")
                 .withContext("")
                 .build();
         EduBean school = EduBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(2)
-                .withTitle("学校")
+                .withTitle("公司")
                 .withContext("")
                 .build();
         EduBean schoolType = EduBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(3)
-                .withTitle("学历")
+                .withTitle("职位")
                 .withContext("")
                 .build();
         EduBean pro = EduBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(4)
-                .withTitle("专业")
+                .withTitle("工作描述")
                 .withContext("")
                 .build();
         eduBeanList.add(startTime);

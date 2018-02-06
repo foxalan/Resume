@@ -17,6 +17,6 @@ public class ItemType {
     public static final int PROJECT = 4;
     public static final int EXP_DETAIL=5;
     public static final int EDU_DETAIL=7;
-    public static final int EDU_DETAIL_INFO = 8;
+    public static final int DETAIL_INFO = 8;
 
 }
