@@ -1,5 +1,6 @@
 package com.example.alan.resume.delegate.edu;
 
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +8,9 @@ import android.view.View;
 
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.delegate.HomeDelegate;
 import com.example.alan.resume.delegate.edu.detail.EduInfoDelegate;
+import com.example.alan.resume.delegate.edu.modify.EduModifyDelegate;
 import com.example.alan.resume.recycler.BaseDecoration;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 
@@ -25,18 +28,30 @@ import butterknife.OnClick;
  * Whether Solve :
  */
 
-public class EduDelegate extends ResumeDelegate {
+public class EduDelegate extends ResumeDelegate implements IEduModifyClickListener {
 
     @BindView(R.id.ryc_edu)
     RecyclerView mRecyclerView;
 
     List<MultipleItemEntity> data;
 
-    @OnClick({R.id.tv_education_add})
+    private static EduDelegate eduDelegate = new EduDelegate();
+
+    public static EduDelegate getInstance() {
+        if (eduDelegate == null) {
+            eduDelegate = new EduDelegate();
+        }
+        return eduDelegate;
+    }
+
+    @OnClick({R.id.tv_education_add, R.id.ict_edu_back})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_education_add:
                 start(new EduInfoDelegate(), SINGLETASK);
+                break;
+            case R.id.ict_edu_back:
+                start(HomeDelegate.getInstance(), SINGLETASK);
                 break;
             default:
                 break;
@@ -58,6 +73,14 @@ public class EduDelegate extends ResumeDelegate {
         data = new EduDetailConvert().convert();
         EduDetailAdapter adapter = new EduDetailAdapter(data);
         mRecyclerView.setAdapter(adapter);
-        //    mRecyclerView.addOnItemTouchListener();
+        adapter.setInfoClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(long id) {
+        Bundle bundle = new Bundle();
+        bundle.putLong("edu_id",id);
+        eduDelegate.setArguments(bundle);
+        start(new EduModifyDelegate());
     }
 }

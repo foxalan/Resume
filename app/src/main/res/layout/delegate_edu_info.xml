@@ -15,7 +15,7 @@
             android:layout_height="match_parent">
 
             <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_goods_back"
+                android:id="@+id/ict_edu_item_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
@@ -36,7 +36,7 @@
 
             <android.support.v7.widget.AppCompatTextView
                 android:gravity="center"
-                android:id="@+id/tv_education_info_save"
+                android:id="@+id/tv_edu_info_save"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="15dp"
                 android:layout_alignParentEnd="true"

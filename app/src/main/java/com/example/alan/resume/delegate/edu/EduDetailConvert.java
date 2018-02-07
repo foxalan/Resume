@@ -29,9 +29,11 @@ public class EduDetailConvert extends DataConverter {
             String school = info.getMSchool();
             String startTime = info.getMStartTime();
             String endTime = info.getMEndTime();
+            long id = info.getMId();
 
             MultipleItemEntity itemEntity = MultipleItemEntity.builder()
                     .setItemType(ItemType.EDU_DETAIL)
+                    .setField(EduItemFields.EDU_ITEM_ID,id)
                     .setField(EduItemFields.EDU_ITEM_SCHOOL,school)
                     .setField(EduItemFields.EDU_ITEM_START_TIME,startTime)
                     .setField(EduItemFields.EDU_ITEM_END_TIME,endTime)

@@ -1,5 +1,8 @@
 package com.example.alan.resume.delegate.edu;
 
+import android.view.View;
+import android.widget.RelativeLayout;
+
 import com.example.alan.resume.R;
 import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
@@ -19,6 +22,12 @@ import java.util.List;
 
 public class EduDetailAdapter extends MultipleRecyclerAdapter {
 
+    private IEduModifyClickListener infoClickListener;
+
+    public void setInfoClickListener(IEduModifyClickListener infoClickListener) {
+        this.infoClickListener = infoClickListener;
+    }
+
     protected EduDetailAdapter(List<MultipleItemEntity> data) {
         super(data);
 
@@ -26,10 +35,19 @@ public class EduDetailAdapter extends MultipleRecyclerAdapter {
     }
 
     @Override
-    protected void convert(MultipleViewHolder holder, MultipleItemEntity entity) {
+    protected void convert(MultipleViewHolder holder, final MultipleItemEntity entity) {
 
         switch (holder.getItemViewType()) {
             case ItemType.EDU_DETAIL:
+                RelativeLayout relativeLayout = holder.getView(R.id.rl_edu_item);
+                relativeLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (infoClickListener!=null){
+                            infoClickListener.onItemClick((Long) entity.getField(EduItemFields.EDU_ITEM_ID));
+                        }
+                    }
+                });
 
                 String school = entity.getField(EduItemFields.EDU_ITEM_SCHOOL);
                 String startTime = entity.getField(EduItemFields.EDU_ITEM_START_TIME);

@@ -2,12 +2,13 @@ package com.example.alan.resume.delegate.edu.detail;
 
 import android.app.Dialog;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.delegate.edu.EduDelegate;
 import com.example.alan.resume.picker.DataPickerDialog;
 import com.example.alan.resume.picker.DatePickerDialog;
 import com.example.alan.resume.picker.DateUtil;
@@ -18,10 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Function :
  * Modify Date : 2018/2/5
+ *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -31,13 +34,26 @@ public class EduInfoDelegate extends ResumeDelegate {
 
     @BindView(R.id.ryc_edu_add)
     RecyclerView mRecyclerView;
-    @BindView(R.id.tv_education_info_save)
-    AppCompatTextView mTvSaveInfo;
+
 
     private List<EduBean> eduBeanList = new ArrayList<>();
     private Dialog dateDialog, chooseDialog;
     private EduInfoAdapter adapter;
     private List<String> listSchool, listSchoolType, listPro;
+
+    @OnClick({R.id.ict_edu_item_back, R.id.tv_edu_info_save})
+    void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ict_edu_item_back:
+                start(EduDelegate.getInstance());
+                break;
+            case R.id.tv_edu_info_save:
+
+                break;
+            default:
+                break;
+        }
+    }
 
     @Override
     public Object getLayout() {

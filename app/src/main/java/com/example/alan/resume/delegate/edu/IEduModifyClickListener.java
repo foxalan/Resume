@@ -9,10 +9,6 @@ package com.example.alan.resume.delegate.edu;
  * Whether Solve :
  */
 
-public enum  EduItemFields {
-    EDU_ITEM_ID,
-    EDU_ITEM_SCHOOL,
-    EDU_ITEM_START_TIME,
-    EDU_ITEM_END_TIME,
-
+public interface IEduModifyClickListener {
+    void onItemClick(long id);
 }
