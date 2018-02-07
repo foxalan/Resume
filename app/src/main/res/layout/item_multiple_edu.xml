@@ -2,7 +2,7 @@
 
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     android:foreground="?attr/selectableItemBackground"
@@ -31,7 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
-        <LinearLayout
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ryc_edu_item"
             android:baselineAligned="false"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
@@ -40,111 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
-            <LinearLayout
-                android:paddingTop="5dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
 
-                <com.joanzapata.iconify.widget.IconTextView
-                    android:layout_gravity="center_horizontal"
-                    android:text="{fa-circle-o}"
-                    android:layout_width="15sp"
-                    android:textSize="17sp"
-                    android:gravity="center_vertical"
-                    android:textColor="@android:color/holo_orange_light"
-                    android:layout_height="15dp" />
-                <View
-                    android:layout_gravity="center_horizontal"
-                    android:background="@android:color/darker_gray"
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:layout_weight="9"
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp">
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:layout_marginStart="@dimen/dp_4"
-                        android:gravity="center_vertical"
-                        android:text="alan"
-                        android:textSize="15sp"
-                        android:id="@+id/tv_education_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp">
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:layout_marginStart="@dimen/dp_4"
-                        android:gravity="center_vertical"
-                        android:text="alan"
-                        android:textSize="15sp"
-                        android:id="@+id/tv_education_school"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:layout_marginStart="@dimen/dp_4"
-                        android:gravity="center_vertical"
-                        android:text="武汉"
-                        android:textSize="12sp"
-                        android:id="@+id/tv_education_school_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-
-                    <View
-                        android:layout_marginStart="@dimen/dp_4"
-                        android:background="@android:color/darker_gray"
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"/>
-
-
-                    <android.support.v7.widget.AppCompatTextView
-                        android:layout_marginStart="@dimen/dp_4"
-                        android:gravity="center_vertical"
-                        android:text="武汉"
-                        android:textSize="12sp"
-                        android:id="@+id/tv_education_school_pro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
 
     </LinearLayout>
 

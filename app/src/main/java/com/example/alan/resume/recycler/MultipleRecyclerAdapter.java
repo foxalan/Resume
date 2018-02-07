@@ -3,13 +3,16 @@ package com.example.alan.resume.recycler;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.example.alan.resume.R;
 import com.example.alan.resume.application.Resume;
-import com.example.alan.resume.delegate.home.IHeadClickListener;
+import com.example.alan.resume.delegate.edu.item.EduItemAdapter;
 import com.example.alan.resume.delegate.exp.item.ExpItemAdapter;
+import com.example.alan.resume.delegate.home.IHeadClickListener;
+import com.example.alan.resume.entity.EduInfo;
 import com.example.alan.resume.entity.ExpInfo;
 
 import java.util.List;
@@ -22,6 +25,7 @@ public class MultipleRecyclerAdapter extends
         BaseMultiItemQuickAdapter<MultipleItemEntity, MultipleViewHolder> {
 
     private ExpItemAdapter expItemAdapter;
+    private EduItemAdapter eduInfoAdapter;
 
     protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
@@ -91,26 +95,23 @@ public class MultipleRecyclerAdapter extends
                 holder.setText(R.id.tv_user_phone, phone);
                 break;
             case ItemType.PROJECT:
-                mTvHead.setText("PROJECT");
+                mTvHead.setText("项目经验");
                 String title = entity.getField(MultipleFields.PRO_TITLE);
                 String context = entity.getField(MultipleFields.PRO_CONTEXT);
                 holder.setText(R.id.tv_project_title, title);
                 holder.setText(R.id.tv_project_context, context);
                 break;
             case ItemType.EDUCATION:
-                mTvHead.setText("EDUCATION");
-                String school = entity.getField(MultipleFields.EDU_SCHOOL);
-                String schoolType = entity.getField(MultipleFields.EDU_SCHOOL_TYPE);
-                String startTime = entity.getField(MultipleFields.EDU_START_TIME);
-                String endTime = entity.getField(MultipleFields.EDU_END_TIME);
-                String pro = entity.getField(MultipleFields.EDU_PRO);
-                holder.setText(R.id.tv_education_time, startTime + "-" + endTime);
-                holder.setText(R.id.tv_education_school, school);
-                holder.setText(R.id.tv_education_school_type, schoolType);
-                holder.setText(R.id.tv_education_school_pro, pro);
+                mTvHead.setText("教育经历");
+                RecyclerView recyclerView = holder.getView(R.id.ryc_edu_item);
+                List<EduInfo> eduInfoList = entity.getField(MultipleFields.EDU_ALL);
+                Log.e("tang",eduInfoList.size()+"-------------");
+                eduInfoAdapter = new EduItemAdapter(eduInfoList,Resume.getApplicationContext());
+                recyclerView.setLayoutManager(new LinearLayoutManager(Resume.getApplicationContext()));
+                recyclerView.setAdapter(eduInfoAdapter);
                 break;
             case ItemType.EXPERIENCE:
-                mTvHead.setText("EXP");
+                mTvHead.setText("工作经验");
                 RecyclerView mRecyclerView = holder.getView(R.id.ryc_exp_item);
                 List<ExpInfo> expInfoList = entity.getField(MultipleFields.EXP_ALL);
                 expItemAdapter = new ExpItemAdapter(expInfoList, Resume.getApplicationContext());
