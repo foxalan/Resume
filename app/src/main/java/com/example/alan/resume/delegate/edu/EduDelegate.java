@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.alan.resume.R;
@@ -50,9 +51,7 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
                 start(new EduInfoDelegate(),SINGLETASK);
                 break;
             case R.id.ict_edu_back:
-
-                start(HomeDelegate.getInstance(),STANDARD);
-            //    HomeDelegate.getInstance().refresh(1);
+                start(HomeDelegate.getInstance(),SINGLETASK);
                 break;
             default:
                 break;
@@ -64,7 +63,16 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         return R.layout.delegate_edu_detail;
     }
 
-    public  EduDetailAdapter adapter;
+    public EduDetailAdapter adapter;
+
+    @Override
+    public void onNewBundle(Bundle args) {
+        super.onNewBundle(args);
+        Log.e("huiye","onNew bundle edu ");
+        data.clear();
+        data.addAll(new EduDetailConvert().convert());
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     public void onBindView() {
@@ -79,15 +87,7 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         adapter.setInfoClickListener(this);
     }
 
-    public void refresh() {
-        data.clear();
-        data = new EduDetailConvert().convert();
-        if (adapter == null){
-            adapter = new EduDetailAdapter(data);
-        }
-        adapter.notifyDataSetChanged();
 
-    }
 
     @Override
     public void onItemClick(long id) {

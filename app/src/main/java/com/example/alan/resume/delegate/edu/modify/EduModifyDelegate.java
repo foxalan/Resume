@@ -66,7 +66,6 @@ public class EduModifyDelegate extends ResumeDelegate implements IEduInfoClickLi
                 Resume.getHandler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        EduDelegate.getInstance().refresh();
                      //   HomeDelegate.getInstance().refresh(1);
                         start(new EduDelegate(),SINGLETASK);
                         LatteLoader.stopLoading();

@@ -1,5 +1,7 @@
 package com.example.alan.resume.delegate.edu;
 
+import android.util.Log;
+
 import com.example.alan.resume.database.DatabaseManager;
 import com.example.alan.resume.entity.EduInfo;
 import com.example.alan.resume.recycler.DataConverter;
@@ -30,6 +32,7 @@ public class EduDetailConvert extends DataConverter {
             String startTime = info.getMStartTime();
             String endTime = info.getMEndTime();
             long id = info.getMId();
+            Log.e("huiye",info.toString());
 
             MultipleItemEntity itemEntity = MultipleItemEntity.builder()
                     .setItemType(ItemType.EDU_DETAIL)

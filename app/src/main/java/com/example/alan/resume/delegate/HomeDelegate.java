@@ -1,7 +1,9 @@
 package com.example.alan.resume.delegate;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
@@ -61,14 +63,17 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
     }
 
 
-
-    public void refresh(int position) {
-        final LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        mRecyclerView.setLayoutManager(manager);
+    @Override
+    public void onNewBundle(Bundle args) {
+        super.onNewBundle(args);
+        Log.e("tang","onNew bundle");
         data = new HomeDataConverter().convert();
-        adapter = MultipleRecyclerAdapter.create(data);
-        mRecyclerView.setAdapter(adapter);
+
+        adapter.notifyItemChanged(1);
+
     }
+
+
 
 
     @Override

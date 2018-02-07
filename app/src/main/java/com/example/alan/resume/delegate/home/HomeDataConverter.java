@@ -54,13 +54,13 @@ public class HomeDataConverter extends DataConverter {
 
         //学历
         List<EduInfo> eduInfoList = DatabaseManager.getInstance().getEducateInfoDao().loadAll();
-        Log.e("tang","===="+eduInfoList.size());
-        for (int i =0;i<eduInfoList.size();i++){
-            Log.e("tang","===="+eduInfoList.get(i).toString());
+        Log.e("tang", "====" + eduInfoList.size());
+        for (int i = 0; i < eduInfoList.size(); i++) {
+            Log.e("tang", "====" + eduInfoList.get(i).toString());
         }
         MultipleItemEntity itemEduEntity = MultipleItemEntity.builder()
                 .setItemType(ItemType.EDUCATION)
-                .setField(MultipleFields.EDU_ALL,eduInfoList)
+                .setField(MultipleFields.EDU_ALL, eduInfoList)
                 .build();
         data.add(itemEduEntity);
 

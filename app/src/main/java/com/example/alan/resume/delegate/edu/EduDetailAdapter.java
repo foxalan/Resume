@@ -1,5 +1,6 @@
 package com.example.alan.resume.delegate.edu;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -38,6 +39,7 @@ public class EduDetailAdapter extends MultipleRecyclerAdapter {
 
         switch (holder.getItemViewType()) {
             case ItemType.EDU_DETAIL:
+                Log.e("huiye","===");
                 RelativeLayout relativeLayout = holder.getView(R.id.rl_edu_item);
                 relativeLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
