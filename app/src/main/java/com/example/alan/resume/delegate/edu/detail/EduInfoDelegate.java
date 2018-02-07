@@ -11,7 +11,6 @@ import com.example.alan.resume.R;
 import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.database.EduOpenHelper;
-import com.example.alan.resume.delegate.HomeDelegate;
 import com.example.alan.resume.delegate.edu.EduDelegate;
 import com.example.alan.resume.loading.LatteLoader;
 import com.example.alan.resume.picker.DataPickerDialog;
@@ -60,7 +59,6 @@ public class EduInfoDelegate extends ResumeDelegate {
                         public void run() {
                         // need to fix
                             EduDelegate.getInstance().refresh();
-                            HomeDelegate.getInstance().refresh(1);
                             start(new EduDelegate());
                             LatteLoader.stopLoading();
                         }
@@ -231,4 +229,6 @@ public class EduInfoDelegate extends ResumeDelegate {
 
         chooseDialog.show();
     }
+
+
 }

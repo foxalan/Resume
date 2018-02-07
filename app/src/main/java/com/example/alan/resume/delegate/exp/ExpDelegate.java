@@ -48,10 +48,10 @@ public class ExpDelegate extends ResumeDelegate implements IExpInfoClickListener
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_exp_add:
-                start(new ExpInfoDelegate(), SINGLETASK);
+                start(new ExpInfoDelegate());
                 break;
             case R.id.icon_exp_back:
-                start(HomeDelegate.getInstance(),SINGLETASK);
+                start(HomeDelegate.getInstance());
                 break;
             default:
                 break;

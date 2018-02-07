@@ -47,4 +47,8 @@ public class EduOpenHelper {
                  .build();
          DatabaseManager.getInstance().getEducateInfoDao().insert(eduInfo);
     }
+
+    public void update(EduInfo info){
+        DatabaseManager.getInstance().getEducateInfoDao().update(info);
+    }
 }

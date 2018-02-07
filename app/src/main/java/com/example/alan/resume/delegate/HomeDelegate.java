@@ -68,31 +68,31 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
         adapter.setHeadClickListener(this);
     }
 
-    public void refresh(int position) {
-        data = new HomeDataConverter().convert();
-        adapter = MultipleRecyclerAdapter.create(data);
-        switch (position) {
-            //USER
-            case 0:
-                adapter.notifyItemChanged(0);
-                break;
-            //EDU
-            case 1:
-                adapter.notifyItemChanged(1);
-                break;
-            //EXP
-            case 2:
-                adapter.notifyItemChanged(2);
-                break;
-            //PRO
-            case 3:
-                adapter.notifyItemChanged(3);
-                break;
-            default:
-                break;
-        }
-
-    }
+//    public void refresh(int position) {
+//        data = new HomeDataConverter().convert();
+//        adapter = MultipleRecyclerAdapter.create(data);
+//        switch (position) {
+//            //USER
+//            case 0:
+//                adapter.notifyItemChanged(0);
+//                break;
+//            //EDU
+//            case 1:
+//                adapter.notifyItemChanged(1);
+//                break;
+//            //EXP
+//            case 2:
+//                adapter.notifyItemChanged(2);
+//                break;
+//            //PRO
+//            case 3:
+//                adapter.notifyItemChanged(3);
+//                break;
+//            default:
+//                break;
+//        }
+//
+//    }
 
 
     @Override
@@ -104,10 +104,10 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
             case ItemType.PROJECT:
                 break;
             case ItemType.EDUCATION:
-                start(new EduDelegate(), SINGLETASK);
+                start(new EduDelegate());
                 break;
             case ItemType.EXPERIENCE:
-                start(new ExpDelegate(), SINGLETASK);
+                start(new ExpDelegate());
                 break;
             default:
                 break;

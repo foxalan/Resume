@@ -47,10 +47,10 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_education_add:
-                start(new EduInfoDelegate(), SINGLETASK);
+                start(new EduInfoDelegate());
                 break;
             case R.id.ict_edu_back:
-                start(HomeDelegate.getInstance());
+                start(new HomeDelegate());
                 break;
             default:
                 break;
