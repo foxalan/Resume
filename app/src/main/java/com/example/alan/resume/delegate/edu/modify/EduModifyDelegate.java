@@ -57,7 +57,7 @@ public class EduModifyDelegate extends ResumeDelegate implements IEduInfoClickLi
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.ict_edu_modify_back:
-                start(EduDelegate.getInstance());
+                start(EduDelegate.getInstance(),SINGLETASK);
                 break;
             case R.id.tv_edu_info_modify_save:
                 saveInfo();
@@ -67,7 +67,8 @@ public class EduModifyDelegate extends ResumeDelegate implements IEduInfoClickLi
                     @Override
                     public void run() {
                         EduDelegate.getInstance().refresh();
-                        start(new EduDelegate());
+                     //   HomeDelegate.getInstance().refresh(1);
+                        start(new EduDelegate(),SINGLETASK);
                         LatteLoader.stopLoading();
                     }
                 },1000);

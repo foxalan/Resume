@@ -48,7 +48,7 @@ public class ExpInfoDelegate extends ResumeDelegate {
 
                 break;
             case R.id.itv_exp_cancel:
-                Log.e("tang","onclick");
+
                 start(ExpDelegate.getInstance());
                 break;
             default:

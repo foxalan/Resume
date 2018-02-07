@@ -1,7 +1,5 @@
 package com.example.alan.resume.delegate;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -9,9 +7,9 @@ import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.delegate.detail.UserDetailDelegate;
 import com.example.alan.resume.delegate.edu.EduDelegate;
+import com.example.alan.resume.delegate.exp.ExpDelegate;
 import com.example.alan.resume.delegate.home.HomeDataConverter;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
-import com.example.alan.resume.delegate.exp.ExpDelegate;
 import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 import com.example.alan.resume.recycler.MultipleRecyclerAdapter;
@@ -54,12 +52,6 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
 
     @Override
     public void onBindView() {
-
-    }
-
-    @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
         data = new HomeDataConverter().convert();
@@ -68,31 +60,15 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
         adapter.setHeadClickListener(this);
     }
 
-//    public void refresh(int position) {
-//        data = new HomeDataConverter().convert();
-//        adapter = MultipleRecyclerAdapter.create(data);
-//        switch (position) {
-//            //USER
-//            case 0:
-//                adapter.notifyItemChanged(0);
-//                break;
-//            //EDU
-//            case 1:
-//                adapter.notifyItemChanged(1);
-//                break;
-//            //EXP
-//            case 2:
-//                adapter.notifyItemChanged(2);
-//                break;
-//            //PRO
-//            case 3:
-//                adapter.notifyItemChanged(3);
-//                break;
-//            default:
-//                break;
-//        }
-//
-//    }
+
+
+    public void refresh(int position) {
+        final LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(manager);
+        data = new HomeDataConverter().convert();
+        adapter = MultipleRecyclerAdapter.create(data);
+        mRecyclerView.setAdapter(adapter);
+    }
 
 
     @Override
@@ -104,10 +80,10 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
             case ItemType.PROJECT:
                 break;
             case ItemType.EDUCATION:
-                start(new EduDelegate());
+                start(new EduDelegate(),SINGLETASK);
                 break;
             case ItemType.EXPERIENCE:
-                start(new ExpDelegate());
+                start(new ExpDelegate(),SINGLETASK);
                 break;
             default:
                 break;

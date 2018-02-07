@@ -28,7 +28,7 @@ public class ExpDetailConvert extends DataConverter {
         ArrayList<MultipleItemEntity> data = new ArrayList<>();
 
         List<ExpInfo> expInfoList = DatabaseManager.getInstance().getExpDao().loadAll();
-        Log.e("tang", "size" + expInfoList.size());
+
         for (ExpInfo info : expInfoList) {
             String school = info.getCompany();
             String startTime = info.getStartTime();

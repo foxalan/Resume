@@ -9,7 +9,9 @@ import com.example.alan.resume.delegate.HomeDelegate;
 
 import qiu.niorgai.StatusBarCompat;
 
-
+/**
+ * @author Alan
+ */
 public class MainActivity extends ProxyActivity {
 
     @Override
@@ -29,4 +31,6 @@ public class MainActivity extends ProxyActivity {
 
         StatusBarCompat.translucentStatusBar(this, true);
     }
+
+
 }

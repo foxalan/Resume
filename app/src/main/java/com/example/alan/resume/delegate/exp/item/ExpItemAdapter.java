@@ -43,7 +43,7 @@ public class ExpItemAdapter extends RecyclerView.Adapter<ExpItemAdapter.MyViewHo
         ExpInfo info = expInfos.get(position);
         holder.mTextExpTime.setText(info.getStartTime()+"-"+info.getEndTime());
         holder.mTextExpCompany.setText(info.getCompany());
-        holder.mTextExpJob.setText(info.getJob());
+        holder.mTextExpJob.setText(info.getWorkDes());
     }
 
 

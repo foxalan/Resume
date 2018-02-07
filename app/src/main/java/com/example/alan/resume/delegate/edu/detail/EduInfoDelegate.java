@@ -48,7 +48,7 @@ public class EduInfoDelegate extends ResumeDelegate {
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.ict_edu_item_back:
-                start(EduDelegate.getInstance());
+                start(EduDelegate.getInstance(),SINGLETASK);
                 break;
             case R.id.tv_edu_info_save:
                 if (isConfirm()){
@@ -59,7 +59,7 @@ public class EduInfoDelegate extends ResumeDelegate {
                         public void run() {
                         // need to fix
                             EduDelegate.getInstance().refresh();
-                            start(new EduDelegate());
+                            start(new EduDelegate(),SINGLETASK);
                             LatteLoader.stopLoading();
                         }
                     },1000);

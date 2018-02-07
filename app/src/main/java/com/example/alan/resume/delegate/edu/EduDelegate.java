@@ -47,10 +47,12 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_education_add:
-                start(new EduInfoDelegate());
+                start(new EduInfoDelegate(),SINGLETASK);
                 break;
             case R.id.ict_edu_back:
-                start(new HomeDelegate());
+
+                start(HomeDelegate.getInstance(),STANDARD);
+            //    HomeDelegate.getInstance().refresh(1);
                 break;
             default:
                 break;
@@ -82,7 +84,6 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         data = new EduDetailConvert().convert();
         if (adapter == null){
             adapter = new EduDetailAdapter(data);
-
         }
         adapter.notifyDataSetChanged();
 

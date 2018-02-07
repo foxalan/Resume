@@ -105,7 +105,7 @@ public class MultipleRecyclerAdapter extends
                 mTvHead.setText("教育经历");
                 RecyclerView recyclerView = holder.getView(R.id.ryc_edu_item);
                 List<EduInfo> eduInfoList = entity.getField(MultipleFields.EDU_ALL);
-                Log.e("tang",eduInfoList.size()+"-------------");
+                Log.e("tang",eduInfoList.size()+"-------------item list");
                 eduInfoAdapter = new EduItemAdapter(eduInfoList,Resume.getApplicationContext());
                 recyclerView.setLayoutManager(new LinearLayoutManager(Resume.getApplicationContext()));
                 recyclerView.setAdapter(eduInfoAdapter);

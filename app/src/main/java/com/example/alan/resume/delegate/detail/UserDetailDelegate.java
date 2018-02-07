@@ -3,7 +3,6 @@ package com.example.alan.resume.delegate.detail;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -59,7 +58,7 @@ public class UserDetailDelegate extends ResumeDelegate {
                     DatabaseManager.getInstance().getUseInfoDao().update(info);
                     List<UserInfo> userInfoList = DatabaseManager.getInstance().getUseInfoDao().loadAll();
                     for (UserInfo info1:userInfoList){
-                        Log.e("tang","==="+info1.toString());
+
                     }
                 }
                 break;

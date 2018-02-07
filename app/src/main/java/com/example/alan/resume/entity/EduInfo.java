@@ -126,4 +126,15 @@ public class EduInfo {
 
     }
 
+    @Override
+    public String toString() {
+        return "EduInfo{" +
+                "mId=" + mId +
+                ", mStartTime='" + mStartTime + '\'' +
+                ", mEndTime='" + mEndTime + '\'' +
+                ", mSchool='" + mSchool + '\'' +
+                ", mSchoolType='" + mSchoolType + '\'' +
+                ", mPro='" + mPro + '\'' +
+                '}';
+    }
 }

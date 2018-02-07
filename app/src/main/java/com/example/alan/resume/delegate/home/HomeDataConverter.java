@@ -1,5 +1,7 @@
 package com.example.alan.resume.delegate.home;
 
+import android.util.Log;
+
 import com.example.alan.resume.database.DatabaseManager;
 import com.example.alan.resume.entity.EduInfo;
 import com.example.alan.resume.entity.ExpInfo;
@@ -52,6 +54,10 @@ public class HomeDataConverter extends DataConverter {
 
         //学历
         List<EduInfo> eduInfoList = DatabaseManager.getInstance().getEducateInfoDao().loadAll();
+        Log.e("tang","===="+eduInfoList.size());
+        for (int i =0;i<eduInfoList.size();i++){
+            Log.e("tang","===="+eduInfoList.get(i).toString());
+        }
         MultipleItemEntity itemEduEntity = MultipleItemEntity.builder()
                 .setItemType(ItemType.EDUCATION)
                 .setField(MultipleFields.EDU_ALL,eduInfoList)

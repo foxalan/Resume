@@ -55,7 +55,7 @@ public class ExpDetailAdapter extends MultipleRecyclerAdapter {
                 String company = entity.getField(ExpItemFields.EXP_ITEM_COMPANY);
                 String startTime = entity.getField(ExpItemFields.EXP_ITEM_START_TIME);
                 String endTime = entity.getField(ExpItemFields.EXP_ITEM_END_TIME);
-                Log.e("tang","company"+company);
+
 
                 AppCompatTextView textView = holder.getView(R.id.tv_exp_item_company);
                 textView.setText(company);
