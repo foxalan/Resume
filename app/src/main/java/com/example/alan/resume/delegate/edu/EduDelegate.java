@@ -14,6 +14,7 @@ import com.example.alan.resume.delegate.edu.modify.EduModifyDelegate;
 import com.example.alan.resume.recycler.BaseDecoration;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -32,8 +33,7 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
 
     @BindView(R.id.ryc_edu)
     RecyclerView mRecyclerView;
-
-    List<MultipleItemEntity> data;
+    List<MultipleItemEntity> data = new ArrayList<>();
 
     private static EduDelegate eduDelegate = new EduDelegate();
 
@@ -63,6 +63,8 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         return R.layout.delegate_edu_detail;
     }
 
+    EduDetailAdapter adapter;
+
     @Override
     public void onBindView() {
 
@@ -71,15 +73,21 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         mRecyclerView.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         data = new EduDetailConvert().convert();
-        EduDetailAdapter adapter = new EduDetailAdapter(data);
+        adapter = new EduDetailAdapter(data);
         mRecyclerView.setAdapter(adapter);
         adapter.setInfoClickListener(this);
+    }
+
+    public void refresh() {
+        data.clear();
+        data = new EduDetailConvert().convert();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onItemClick(long id) {
         Bundle bundle = new Bundle();
-        bundle.putLong("edu_id",id);
+        bundle.putLong("edu_id", id);
         eduDelegate.setArguments(bundle);
         start(new EduModifyDelegate());
     }

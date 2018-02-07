@@ -5,10 +5,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.alan.resume.R;
+import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.database.EduOpenHelper;
 import com.example.alan.resume.delegate.edu.EduDelegate;
+import com.example.alan.resume.loading.LatteLoader;
 import com.example.alan.resume.picker.DataPickerDialog;
 import com.example.alan.resume.picker.DatePickerDialog;
 import com.example.alan.resume.picker.DateUtil;
@@ -35,7 +39,6 @@ public class EduInfoDelegate extends ResumeDelegate {
     @BindView(R.id.ryc_edu_add)
     RecyclerView mRecyclerView;
 
-
     private List<EduBean> eduBeanList = new ArrayList<>();
     private Dialog dateDialog, chooseDialog;
     private EduInfoAdapter adapter;
@@ -48,11 +51,34 @@ public class EduInfoDelegate extends ResumeDelegate {
                 start(EduDelegate.getInstance());
                 break;
             case R.id.tv_edu_info_save:
-
+                if (isConfirm()){
+                    EduOpenHelper.getInstance().insert(eduBeanList);
+                    LatteLoader.showLoading(getContext());
+                    Resume.getHandler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            EduDelegate.getInstance().refresh();
+                            start(EduDelegate.getInstance(),SINGLETASK);
+                            LatteLoader.stopLoading();
+                        }
+                    },1000);
+                }else {
+                    Toast.makeText(getContext(),"信息未填全",Toast.LENGTH_LONG).show();
+                }
                 break;
             default:
                 break;
         }
+    }
+
+    private boolean isConfirm() {
+        for (EduBean bean:eduBeanList){
+            if ("".equals(bean.getmContext())){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @Override

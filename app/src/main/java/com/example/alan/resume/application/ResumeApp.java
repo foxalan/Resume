@@ -61,7 +61,8 @@ public class ResumeApp extends Application {
 //                .withWorkDes("just code maker")
 //                .build();
 //        DatabaseManager.getInstance().getExpDao().insert(info);
-        Resume.init(this);
+        Resume.init(this)
+                .configure();
 
         //设置字体
         Iconify.with(new FontAwesomeModule());
