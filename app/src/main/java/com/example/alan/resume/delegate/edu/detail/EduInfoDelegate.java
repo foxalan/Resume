@@ -58,7 +58,7 @@ public class EduInfoDelegate extends ResumeDelegate {
                         @Override
                         public void run() {
                             EduDelegate.getInstance().refresh();
-                            start(EduDelegate.getInstance(),SINGLETASK);
+                            start(new EduDelegate());
                             LatteLoader.stopLoading();
                         }
                     },1000);

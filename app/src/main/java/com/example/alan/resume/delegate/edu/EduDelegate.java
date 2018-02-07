@@ -63,7 +63,7 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         return R.layout.delegate_edu_detail;
     }
 
-    EduDetailAdapter adapter;
+    public  EduDetailAdapter adapter;
 
     @Override
     public void onBindView() {
@@ -81,7 +81,12 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
     public void refresh() {
         data.clear();
         data = new EduDetailConvert().convert();
+        if (adapter == null){
+            adapter = new EduDetailAdapter(data);
+
+        }
         adapter.notifyDataSetChanged();
+
     }
 
     @Override

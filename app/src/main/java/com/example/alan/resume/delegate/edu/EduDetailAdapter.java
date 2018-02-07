@@ -30,7 +30,6 @@ public class EduDetailAdapter extends MultipleRecyclerAdapter {
 
     protected EduDetailAdapter(List<MultipleItemEntity> data) {
         super(data);
-
         addItemType(ItemType.EDU_DETAIL, R.layout.item_edu_detail);
     }
 
