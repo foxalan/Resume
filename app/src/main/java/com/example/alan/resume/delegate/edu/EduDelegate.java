@@ -23,7 +23,6 @@ import butterknife.OnClick;
 /**
  * Function :
  * Modify Date : 2018/2/5
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -51,7 +50,7 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
                 start(new EduInfoDelegate(), SINGLETASK);
                 break;
             case R.id.ict_edu_back:
-                start(HomeDelegate.getInstance(), SINGLETASK);
+                start(HomeDelegate.getInstance());
                 break;
             default:
                 break;

@@ -25,10 +25,10 @@ public class ResumeApp extends Application {
         DatabaseManager.getInstance().init(this);
 //        UserInfo userInfo = UserInfo.builder()
 //
-//                .setName("alan")
+//                .setName("莫莫伽")
 //                .setAge(23)
 //                .setExperience("2")
-//                .setLocation("wuhan")
+//                .setLocation("武汉")
 //                .setPhone("18202710074")
 //                .build();
 //        DatabaseManager.getInstance().getUseInfoDao().insert(userInfo);
@@ -48,7 +48,7 @@ public class ResumeApp extends Application {
 //                .setEndTime("2016-07")
 //                .setSchool("湖北大学")
 //                .setSchoolType("本科")
-//                .setPro("XIN")
+//                .setPro("信息与计算科学")
 //                .build();
 //
 //        DatabaseManager.getInstance().getEducateInfoDao().insert(educateInfo);
@@ -56,11 +56,14 @@ public class ResumeApp extends Application {
 //                .setId(3)
 //                .withStartTime("2016-7")
 //                .withEndTime("2018-1")
-//                .withCompany("fxc")
-//                .withWorkDes("coder")
-//                .withWorkDes("just code maker")
+//                .withCompany("富土")
+//                .withWorkDes("程序猿")
+//                .withWorkDes("混日子")
 //                .build();
 //        DatabaseManager.getInstance().getExpDao().insert(info);
+
+
+
         Resume.init(this)
                 .configure();
 

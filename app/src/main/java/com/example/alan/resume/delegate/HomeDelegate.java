@@ -23,6 +23,7 @@ import butterknife.BindView;
 /**
  * Function :
  * Modify Date : 2018/2/1
+ *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -34,6 +35,8 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
     RecyclerView mRecyclerView;
 
     private static HomeDelegate homeDelegate;
+    private MultipleRecyclerAdapter adapter;
+    private List<MultipleItemEntity> data;
 
     public static HomeDelegate getInstance() {
         if (homeDelegate == null) {
@@ -59,11 +62,38 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
         super.onLazyInitView(savedInstanceState);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
-        final List<MultipleItemEntity> data = new HomeDataConverter().convert();
-        MultipleRecyclerAdapter adapter = MultipleRecyclerAdapter.create(data);
+        data = new HomeDataConverter().convert();
+        adapter = MultipleRecyclerAdapter.create(data);
         mRecyclerView.setAdapter(adapter);
         adapter.setHeadClickListener(this);
     }
+
+    public void refresh(int position) {
+        data = new HomeDataConverter().convert();
+        adapter = MultipleRecyclerAdapter.create(data);
+        switch (position) {
+            //USER
+            case 0:
+                adapter.notifyItemChanged(0);
+                break;
+            //EDU
+            case 1:
+                adapter.notifyItemChanged(1);
+                break;
+            //EXP
+            case 2:
+                adapter.notifyItemChanged(2);
+                break;
+            //PRO
+            case 3:
+                adapter.notifyItemChanged(3);
+                break;
+            default:
+                break;
+        }
+
+    }
+
 
     @Override
     public void onHeadClick(int itemType) {
