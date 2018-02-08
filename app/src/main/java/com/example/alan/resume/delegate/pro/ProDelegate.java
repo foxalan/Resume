@@ -9,7 +9,8 @@ import android.view.View;
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.delegate.HomeDelegate;
-import com.example.alan.resume.delegate.edu.EduDetailConvert;
+import com.example.alan.resume.delegate.pro.detail.ProInfoDelegate;
+import com.example.alan.resume.delegate.pro.modify.ProModifyDelegate;
 import com.example.alan.resume.recycler.BaseDecoration;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 
@@ -35,6 +36,16 @@ public class ProDelegate extends ResumeDelegate implements IProInfoClickListener
     private List<MultipleItemEntity> data;
     private ProDetailAdapter adapter;
 
+    private static ProDelegate proDelegate = new ProDelegate();
+
+    public static ProDelegate getInstance() {
+        if (proDelegate == null) {
+            proDelegate = new ProDelegate();
+        }
+        return proDelegate;
+    }
+
+
     @OnClick({R.id.ict_pro_back, R.id.tv_pro_add})
     void onClick(View view) {
         switch (view.getId()) {
@@ -42,7 +53,7 @@ public class ProDelegate extends ResumeDelegate implements IProInfoClickListener
                 start(new HomeDelegate(),SINGLETASK);
                 break;
             case R.id.tv_pro_add:
-
+                start(new ProInfoDelegate(),SINGLETASK);
                 break;
             default:
                 break;
@@ -53,7 +64,7 @@ public class ProDelegate extends ResumeDelegate implements IProInfoClickListener
     public void onNewBundle(Bundle args) {
         super.onNewBundle(args);
         data.clear();
-        data.addAll(new EduDetailConvert().convert());
+        data.addAll(new ProDetailConvert().convert());
         adapter.notifyDataSetChanged();
     }
 
@@ -77,6 +88,9 @@ public class ProDelegate extends ResumeDelegate implements IProInfoClickListener
 
     @Override
     public void onItemClick(long id) {
-
+        Bundle bundle = new Bundle();
+        bundle.putLong("pro_id", id);
+        proDelegate.setArguments(bundle);
+        start(new ProModifyDelegate());
     }
 }
