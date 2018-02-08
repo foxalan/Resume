@@ -3,6 +3,7 @@ package com.example.alan.resume.recycler;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
@@ -94,6 +95,7 @@ public class MultipleRecyclerAdapter extends
                 mTvHead.setText("项目经验");
                 RecyclerView recyclerView1 = holder.getView(R.id.ryc_pro_item);
                 List<ProInfo> proInfoList = entity.getField(MultipleFields.PRO_ALL);
+                Log.e("tang",proInfoList.get(0).toString()+"------------");
                 ProItemAdapter adapter = new ProItemAdapter(proInfoList,Resume.getApplicationContext());
                 recyclerView1.setLayoutManager(new LinearLayoutManager(Resume.getApplicationContext()));
                 recyclerView1.setAdapter(adapter);

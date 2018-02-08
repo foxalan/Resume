@@ -120,5 +120,14 @@ public class ProInfo {
 
     }
 
-
+    @Override
+    public String toString() {
+        return "ProInfo{" +
+                "mId=" + mId +
+                ", mStartTime='" + mStartTime + '\'' +
+                ", mEndTime='" + mEndTime + '\'' +
+                ", mTitle='" + mTitle + '\'' +
+                ", mContext='" + mContext + '\'' +
+                '}';
+    }
 }

@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.example.alan.resume.R;
-import com.example.alan.resume.delegate.exp.ExpItemFields;
 import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 import com.example.alan.resume.recycler.MultipleRecyclerAdapter;
@@ -39,7 +38,7 @@ public class ProDetailAdapter extends MultipleRecyclerAdapter {
     protected void convert(MultipleViewHolder holder,final MultipleItemEntity entity) {
 
         switch (holder.getItemViewType()) {
-            case ItemType.EXP_DETAIL:
+            case ItemType.PRO_DETAIL:
 
                 RelativeLayout relativeLayout = holder.getView(R.id.rl_pro_item);
                 relativeLayout.setOnClickListener(new View.OnClickListener() {
@@ -53,9 +52,8 @@ public class ProDetailAdapter extends MultipleRecyclerAdapter {
                 });
 
                 String title = entity.getField(ProItemFields.PRO_ITEM_TITLE);
-                String startTime = entity.getField(ExpItemFields.EXP_ITEM_START_TIME);
-                String endTime = entity.getField(ExpItemFields.EXP_ITEM_END_TIME);
-
+                String startTime = entity.getField(ProItemFields.PRO_ITEM_START_TIME);
+                String endTime = entity.getField(ProItemFields.PRO_ITEM_END_TIME);
 
                 AppCompatTextView textView = holder.getView(R.id.tv_pro_item_name);
                 textView.setText(title);

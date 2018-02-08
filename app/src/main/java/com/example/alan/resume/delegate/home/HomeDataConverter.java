@@ -74,8 +74,6 @@ public class HomeDataConverter extends DataConverter {
                 .setField(MultipleFields.PRO_ALL, proInfoList)
                 .build();
         data.add(itemProEntity);
-
-
         return data;
     }
 }

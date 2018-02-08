@@ -9,6 +9,7 @@
     android:layout_height="60dp">
 
     <android.support.v7.widget.AppCompatTextView
+        android:text="aaaaaaaaaaa"
         android:id="@+id/tv_pro_item_name"
         android:textStyle="bold"
         android:textColor="@android:color/black"
@@ -19,12 +20,13 @@
         android:layout_height="wrap_content" />
 
     <android.support.v7.widget.AppCompatTextView
+        android:text="aaaaaaaaaaaaa"
         android:textColor="@android:color/black"
         android:layout_marginTop="5dp"
         android:textSize="15sp"
         android:id="@+id/tv_pro_item_time"
-        android:layout_below="@id/tv_edu_item_school"
-        android:layout_alignStart="@id/tv_edu_item_school"
+        android:layout_below="@id/tv_pro_item_name"
+        android:layout_alignLeft="@id/tv_pro_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

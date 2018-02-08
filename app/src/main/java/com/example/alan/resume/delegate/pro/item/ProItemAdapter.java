@@ -3,6 +3,7 @@ package com.example.alan.resume.delegate.pro.item;
 import android.content.Context;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class ProItemAdapter extends RecyclerView.Adapter<ProItemAdapter.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ProInfo info = proInfos.get(position);
+        Log.e("tang",info.toString()+"=============");
         holder.mTextProTime.setText(info.getMStartTime()+"-"+info.getMEndTime());
         holder.mTextProTitle.setText(info.getMTitle());
 
