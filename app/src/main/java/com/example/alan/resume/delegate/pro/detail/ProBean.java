@@ -10,7 +10,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
  * Whether Solve :
  */
 
-public class EduBean implements MultiItemEntity {
+public class ProBean implements MultiItemEntity {
 
     private int mId;
     private String mTitle;
@@ -49,7 +49,7 @@ public class EduBean implements MultiItemEntity {
         return mItemType;
     }
 
-    public EduBean(int mId, String mTitle, String mContext, int mItemType) {
+    public ProBean(int mId, String mTitle, String mContext, int mItemType) {
         this.mId = mId;
         this.mTitle = mTitle;
         this.mContext = mContext;
@@ -94,8 +94,8 @@ public class EduBean implements MultiItemEntity {
 
 
 
-        public EduBean build() {
-            return new EduBean(mId, mTitle, mContext,mItemType);
+        public ProBean build() {
+            return new ProBean(mId, mTitle, mContext,mItemType);
         }
     }
 }

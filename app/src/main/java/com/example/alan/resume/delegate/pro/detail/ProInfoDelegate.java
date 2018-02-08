@@ -10,8 +10,9 @@ import android.widget.Toast;
 import com.example.alan.resume.R;
 import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.base.ResumeDelegate;
-import com.example.alan.resume.database.EduOpenHelper;
+import com.example.alan.resume.database.ProOpenHelper;
 import com.example.alan.resume.delegate.edu.EduDelegate;
+import com.example.alan.resume.delegate.pro.ProDelegate;
 import com.example.alan.resume.loading.LatteLoader;
 import com.example.alan.resume.picker.DataPickerDialog;
 import com.example.alan.resume.picker.DatePickerDialog;
@@ -27,39 +28,40 @@ import butterknife.OnClick;
 
 /**
  * Function :
- * Modify Date : 2018/2/5
+ * Modify Date : 2018/2/8
  *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
  */
 
-public class EduInfoDelegate extends ResumeDelegate {
+public class ProInfoDelegate extends ResumeDelegate {
 
-    @BindView(R.id.ryc_edu_add)
+
+    @BindView(R.id.ryc_pro_add)
     RecyclerView mRecyclerView;
 
-    private List<EduBean> eduBeanList = new ArrayList<>();
+    private List<ProBean> proBeanList = new ArrayList<>();
     private Dialog dateDialog, chooseDialog;
-    private EduInfoAdapter adapter;
+    private ProInfoAdapter adapter;
     private List<String> listSchool, listSchoolType, listPro;
 
-    @OnClick({R.id.ict_edu_item_back, R.id.tv_edu_info_save})
+    @OnClick({R.id.ict_pro_item_back, R.id.tv_pro_info_save})
     void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ict_edu_item_back:
+            case R.id.ict_pro_item_back:
                 start(EduDelegate.getInstance(),SINGLETASK);
                 break;
-            case R.id.tv_edu_info_save:
+            case R.id.tv_pro_info_save:
                 if (isConfirm()){
-                    EduOpenHelper.getInstance().insert(eduBeanList);
+                    ProOpenHelper.getInstance().insert(proBeanList);
                     LatteLoader.showLoading(getContext());
                     Resume.getHandler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                        // need to fix
+                            // need to fix
 
-                            start(new EduDelegate(),SINGLETASK);
+                            start(new ProDelegate(),SINGLETASK);
                             LatteLoader.stopLoading();
                         }
                     },1000);
@@ -73,7 +75,7 @@ public class EduInfoDelegate extends ResumeDelegate {
     }
 
     private boolean isConfirm() {
-        for (EduBean bean:eduBeanList){
+        for (ProBean bean:proBeanList){
             if ("".equals(bean.getmContext())){
                 return false;
             }
@@ -84,7 +86,7 @@ public class EduInfoDelegate extends ResumeDelegate {
 
     @Override
     public Object getLayout() {
-        return R.layout.delegate_edu_info;
+        return R.layout.delegate_pro_info;
     }
 
     @Override
@@ -110,53 +112,48 @@ public class EduInfoDelegate extends ResumeDelegate {
             listPro.add(str);
         }
 
-        EduBean startTime = EduBean.builder()
+        ProBean startTime = ProBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(0)
-                .withTitle("入学时间")
+                .withTitle("开始时间")
                 .withContext("")
                 .build();
-        EduBean endTime = EduBean.builder()
+        ProBean endTime = ProBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(1)
-                .withTitle("毕业时间")
+                .withTitle("结束时间")
                 .withContext("")
                 .build();
-        EduBean school = EduBean.builder()
+        ProBean school = ProBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(2)
-                .withTitle("学校")
+                .withTitle("项目名称")
                 .withContext("")
                 .build();
-        EduBean schoolType = EduBean.builder()
+        ProBean schoolType = ProBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(3)
-                .withTitle("学历")
+                .withTitle("项目描述")
                 .withContext("")
                 .build();
-        EduBean pro = EduBean.builder()
-                .setItemType(ItemType.DETAIL_INFO)
-                .withId(4)
-                .withTitle("专业")
-                .withContext("")
-                .build();
-        eduBeanList.add(startTime);
-        eduBeanList.add(endTime);
-        eduBeanList.add(school);
-        eduBeanList.add(schoolType);
-        eduBeanList.add(pro);
+
+        proBeanList.add(startTime);
+        proBeanList.add(endTime);
+        proBeanList.add(school);
+        proBeanList.add(schoolType);
+
 
     }
 
     private void initRecyclerView() {
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
-        adapter = new EduInfoAdapter(eduBeanList);
+        adapter = new ProInfoAdapter(proBeanList);
         mRecyclerView.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         mRecyclerView.setAdapter(adapter);
 
-        adapter.setInfoClickListener(new IEduInfoClickListener() {
+        adapter.setInfoPositionClickListener(new IProInfoPositionClickListener() {
             @Override
             public void onItemClick(int position) {
                 switch (position) {
@@ -171,9 +168,6 @@ public class EduInfoDelegate extends ResumeDelegate {
                         break;
                     case 3:
                         showChooseDialog(listSchoolType, 3);
-                        break;
-                    case 4:
-                        showChooseDialog(listPro, 4);
                         break;
                     default:
                         break;
@@ -190,7 +184,7 @@ public class EduInfoDelegate extends ResumeDelegate {
             public void onDateSelected(int[] dates) {
                 String date = dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
                         + (dates[2] > 9 ? dates[2] : ("0" + dates[2]));
-                eduBeanList.get(position).setmContext(date);
+                proBeanList.get(position).setmContext(date);
                 adapter.notifyItemChanged(position);
             }
 
@@ -217,7 +211,7 @@ public class EduInfoDelegate extends ResumeDelegate {
                 .setOnDataSelectedListener(new DataPickerDialog.OnDataSelectedListener() {
                     @Override
                     public void onDataSelected(String itemValue, int p) {
-                        eduBeanList.get(position).setmContext(itemValue);
+                        proBeanList.get(position).setmContext(itemValue);
                         adapter.notifyItemChanged(position);
                     }
 
@@ -229,6 +223,4 @@ public class EduInfoDelegate extends ResumeDelegate {
 
         chooseDialog.show();
     }
-
-
 }
