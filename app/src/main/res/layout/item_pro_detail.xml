@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_pro_item"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/bg_on_item_click"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/tv_pro_item_name"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:textColor="@android:color/black"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:id="@+id/tv_pro_item_time"
+        android:layout_below="@id/tv_edu_item_school"
+        android:layout_alignStart="@id/tv_edu_item_school"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:layout_alignParentEnd="true"
+        android:id="@+id/ic_edu_item_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/black"
+        android:text="{fa-chevron-right}"
+        android:gravity="center_vertical"
+        android:textSize="15sp" />
+
+</RelativeLayout>

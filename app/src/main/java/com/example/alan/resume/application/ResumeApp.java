@@ -36,8 +36,8 @@ public class ResumeApp extends Application {
 //                .setId(1)
 //                .setStartTime("2017-06-11")
 //                .setEndTime("2017-09-11")
-//                .setTitle("WLY")
-//                .setContext("wly create")
+//                .setTitle("五粮液")
+//                .setContext("五粮液一诺")
 //                .build();
 //        DatabaseManager.getInstance().getProjectInfoDao().insert(projectInfo);
 //

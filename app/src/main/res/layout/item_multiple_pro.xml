@@ -29,53 +29,18 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
 
-        <LinearLayout
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ryc_pro_item"
             android:baselineAligned="false"
             android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:orientation="horizontal"
-            android:layout_weight="6"
+            android:layout_weight="5"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
-            <LinearLayout
-                android:paddingTop="5dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-
-                <android.support.v7.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:background="@color/colorPrimary" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:layout_weight="3"
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-
-               <android.support.v7.widget.AppCompatTextView
-                   android:id="@+id/tv_project_title"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/tv_project_context"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-
-            </LinearLayout>
-        </LinearLayout>
-
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

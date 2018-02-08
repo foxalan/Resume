@@ -31,4 +31,5 @@ public enum MultipleFields {
     //EXP
     EXP_ALL,
     EDU_ALL,
+    PRO_ALL,
 }

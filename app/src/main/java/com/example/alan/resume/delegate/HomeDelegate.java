@@ -12,6 +12,7 @@ import com.example.alan.resume.delegate.edu.EduDelegate;
 import com.example.alan.resume.delegate.exp.ExpDelegate;
 import com.example.alan.resume.delegate.home.HomeDataConverter;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
+import com.example.alan.resume.delegate.pro.ProDelegate;
 import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 import com.example.alan.resume.recycler.MultipleRecyclerAdapter;
@@ -80,9 +81,10 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
     public void onHeadClick(int itemType) {
         switch (itemType) {
             case ItemType.USER:
-                start(new UserDetailDelegate());
+                start(new UserDetailDelegate(),SINGLETASK);
                 break;
             case ItemType.PROJECT:
+                start(new ProDelegate(),SINGLETASK);
                 break;
             case ItemType.EDUCATION:
                 start(new EduDelegate(),SINGLETASK);

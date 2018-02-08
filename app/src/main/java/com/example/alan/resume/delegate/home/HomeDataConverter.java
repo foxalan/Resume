@@ -1,10 +1,9 @@
 package com.example.alan.resume.delegate.home;
 
-import android.util.Log;
-
 import com.example.alan.resume.database.DatabaseManager;
 import com.example.alan.resume.entity.EduInfo;
 import com.example.alan.resume.entity.ExpInfo;
+import com.example.alan.resume.entity.ProInfo;
 import com.example.alan.resume.entity.UserInfo;
 import com.example.alan.resume.recycler.DataConverter;
 import com.example.alan.resume.recycler.ItemType;
@@ -54,16 +53,11 @@ public class HomeDataConverter extends DataConverter {
 
         //学历
         List<EduInfo> eduInfoList = DatabaseManager.getInstance().getEducateInfoDao().loadAll();
-        Log.e("tang", "====" + eduInfoList.size());
-        for (int i = 0; i < eduInfoList.size(); i++) {
-            Log.e("tang", "====" + eduInfoList.get(i).toString());
-        }
         MultipleItemEntity itemEduEntity = MultipleItemEntity.builder()
                 .setItemType(ItemType.EDUCATION)
                 .setField(MultipleFields.EDU_ALL, eduInfoList)
                 .build();
         data.add(itemEduEntity);
-
 
         //工作经验
         List<ExpInfo> expInfoList = DatabaseManager.getInstance().getExpDao().loadAll();
@@ -72,6 +66,14 @@ public class HomeDataConverter extends DataConverter {
                 .setField(MultipleFields.EXP_ALL, expInfoList)
                 .build();
         data.add(itemExpEntity);
+
+        //项目经验
+        List<ProInfo> proInfoList = DatabaseManager.getInstance().getProjectInfoDao().loadAll();
+        MultipleItemEntity itemProEntity = MultipleItemEntity.builder()
+                .setItemType(ItemType.PROJECT)
+                .setField(MultipleFields.PRO_ALL, proInfoList)
+                .build();
+        data.add(itemProEntity);
 
 
         return data;

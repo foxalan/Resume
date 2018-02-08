@@ -11,8 +11,10 @@ import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.delegate.edu.item.EduItemAdapter;
 import com.example.alan.resume.delegate.exp.item.ExpItemAdapter;
 import com.example.alan.resume.delegate.home.IHeadClickListener;
+import com.example.alan.resume.delegate.pro.item.ProItemAdapter;
 import com.example.alan.resume.entity.EduInfo;
 import com.example.alan.resume.entity.ExpInfo;
+import com.example.alan.resume.entity.ProInfo;
 
 import java.util.List;
 
@@ -45,11 +47,6 @@ public class MultipleRecyclerAdapter extends
         return new MultipleRecyclerAdapter(converter.convert());
     }
 
-    public void refresh(List<MultipleItemEntity> data) {
-        getData().clear();
-        setNewData(data);
-        notifyDataSetChanged();
-    }
 
     private void init() {
         //设置不同的item布局
@@ -95,10 +92,11 @@ public class MultipleRecyclerAdapter extends
                 break;
             case ItemType.PROJECT:
                 mTvHead.setText("项目经验");
-                String title = entity.getField(MultipleFields.PRO_TITLE);
-                String context = entity.getField(MultipleFields.PRO_CONTEXT);
-                holder.setText(R.id.tv_project_title, title);
-                holder.setText(R.id.tv_project_context, context);
+                RecyclerView recyclerView1 = holder.getView(R.id.ryc_pro_item);
+                List<ProInfo> proInfoList = entity.getField(MultipleFields.PRO_ALL);
+                ProItemAdapter adapter = new ProItemAdapter(proInfoList,Resume.getApplicationContext());
+                recyclerView1.setLayoutManager(new LinearLayoutManager(Resume.getApplicationContext()));
+                recyclerView1.setAdapter(adapter);
                 break;
             case ItemType.EDUCATION:
                 mTvHead.setText("教育经历");
