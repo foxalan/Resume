@@ -67,10 +67,10 @@ public class HomeDelegate extends ResumeDelegate implements IHeadClickListener {
     public void onNewBundle(Bundle args) {
         super.onNewBundle(args);
         Log.e("tang","onNew bundle");
-        data = new HomeDataConverter().convert();
+        data.clear();
+        data.addAll(new HomeDataConverter().convert());
 
-        adapter.notifyItemChanged(1);
-
+        adapter.notifyDataSetChanged();
     }
 
 
