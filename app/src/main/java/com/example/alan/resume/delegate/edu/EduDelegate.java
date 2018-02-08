@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.example.alan.resume.R;
@@ -68,7 +67,6 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
     @Override
     public void onNewBundle(Bundle args) {
         super.onNewBundle(args);
-        Log.e("huiye","onNew bundle edu ");
         data.clear();
         data.addAll(new EduDetailConvert().convert());
         adapter.notifyDataSetChanged();

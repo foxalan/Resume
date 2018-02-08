@@ -5,15 +5,16 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.alan.resume.R;
+import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.base.ResumeDelegate;
-import com.example.alan.resume.delegate.edu.detail.EduBean;
-import com.example.alan.resume.delegate.edu.detail.EduInfoAdapter;
+import com.example.alan.resume.database.ExpOpenHelper;
 import com.example.alan.resume.delegate.edu.detail.IEduInfoClickListener;
 import com.example.alan.resume.delegate.exp.ExpDelegate;
+import com.example.alan.resume.loading.LatteLoader;
 import com.example.alan.resume.picker.DataPickerDialog;
 import com.example.alan.resume.picker.DatePickerDialog;
 import com.example.alan.resume.picker.DateUtil;
@@ -45,20 +46,45 @@ public class ExpInfoDelegate extends ResumeDelegate {
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_exp_info_save:
+                if (isConfirm()){
+                    ExpOpenHelper.getInstance().insert(expBeanList);
+                    LatteLoader.showLoading(getContext());
+                    Resume.getHandler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // need to fix
+
+                            start(new ExpDelegate(),SINGLETASK);
+                            LatteLoader.stopLoading();
+                        }
+                    },1000);
+                }else {
+                    Toast.makeText(getContext(),"信息未填全",Toast.LENGTH_LONG).show();
+                }
 
                 break;
             case R.id.itv_exp_cancel:
 
-                start(ExpDelegate.getInstance());
+                start(ExpDelegate.getInstance(),SINGLETASK);
                 break;
             default:
                 break;
         }
     }
 
-    private List<EduBean> eduBeanList = new ArrayList<>();
+    private boolean isConfirm() {
+        for (ExpBean bean:expBeanList){
+            if ("".equals(bean.getmContext())){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private List<ExpBean> expBeanList = new ArrayList<>();
     private Dialog dateDialog, chooseDialog;
-    private EduInfoAdapter adapter;
+    private ExpInfoAdapter adapter;
     private List<String> listSchool, listSchoolType, listPro;
 
     @Override
@@ -75,62 +101,62 @@ public class ExpInfoDelegate extends ResumeDelegate {
     private void initData() {
 
         listSchool = new ArrayList<>();
-        for (String str : getContext().getResources().getStringArray(R.array.schools)) {
+        for (String str : getContext().getResources().getStringArray(R.array.company)) {
             listSchool.add(str);
         }
 
         listSchoolType = new ArrayList<>();
-        for (String str : getContext().getResources().getStringArray(R.array.school_type)) {
+        for (String str : getContext().getResources().getStringArray(R.array.job)) {
             listSchoolType.add(str);
         }
 
         listPro = new ArrayList<>();
-        for (String str : getContext().getResources().getStringArray(R.array.pro)) {
+        for (String str : getContext().getResources().getStringArray(R.array.jobdes)) {
             listPro.add(str);
         }
 
-        EduBean startTime = EduBean.builder()
+        ExpBean startTime = ExpBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(0)
                 .withTitle("入职时间")
                 .withContext("")
                 .build();
-        EduBean endTime = EduBean.builder()
+        ExpBean endTime = ExpBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(1)
                 .withTitle("离职时间")
                 .withContext("")
                 .build();
-        EduBean school = EduBean.builder()
+        ExpBean school = ExpBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(2)
                 .withTitle("公司")
                 .withContext("")
                 .build();
-        EduBean schoolType = EduBean.builder()
+        ExpBean schoolType = ExpBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(3)
                 .withTitle("职位")
                 .withContext("")
                 .build();
-        EduBean pro = EduBean.builder()
+        ExpBean pro = ExpBean.builder()
                 .setItemType(ItemType.DETAIL_INFO)
                 .withId(4)
                 .withTitle("工作描述")
                 .withContext("")
                 .build();
-        eduBeanList.add(startTime);
-        eduBeanList.add(endTime);
-        eduBeanList.add(school);
-        eduBeanList.add(schoolType);
-        eduBeanList.add(pro);
+        expBeanList.add(startTime);
+        expBeanList.add(endTime);
+        expBeanList.add(school);
+        expBeanList.add(schoolType);
+        expBeanList.add(pro);
 
     }
 
     private void initRecyclerView() {
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
-        adapter = new EduInfoAdapter(eduBeanList);
+        adapter = new ExpInfoAdapter(expBeanList);
         mRecyclerView.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
         mRecyclerView.setAdapter(adapter);
@@ -169,7 +195,7 @@ public class ExpInfoDelegate extends ResumeDelegate {
             public void onDateSelected(int[] dates) {
                 String date = dates[0] + "-" + (dates[1] > 9 ? dates[1] : ("0" + dates[1])) + "-"
                         + (dates[2] > 9 ? dates[2] : ("0" + dates[2]));
-                eduBeanList.get(position).setmContext(date);
+                expBeanList.get(position).setmContext(date);
                 adapter.notifyItemChanged(position);
             }
 
@@ -196,7 +222,7 @@ public class ExpInfoDelegate extends ResumeDelegate {
                 .setOnDataSelectedListener(new DataPickerDialog.OnDataSelectedListener() {
                     @Override
                     public void onDataSelected(String itemValue, int p) {
-                        eduBeanList.get(position).setmContext(itemValue);
+                        expBeanList.get(position).setmContext(itemValue);
                         adapter.notifyItemChanged(position);
                     }
 

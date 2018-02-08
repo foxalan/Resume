@@ -49,6 +49,7 @@ public class ExpInfoAdapter extends BaseMultiItemQuickAdapter<ExpBean, BaseViewH
                         infoClickListener.onItemClick(item.getmId());
                     }
                 });
+
                 String title = item.getmTitle();
                 String context = item.getmContext();
                 helper.setText(R.id.tv_edu_item_title, title);

@@ -34,6 +34,16 @@ public class ExpDelegate extends ResumeDelegate implements IExpInfoClickListener
     RecyclerView mRecyclerView;
 
     private static ExpDelegate expDelegate = new ExpDelegate();
+    private List<MultipleItemEntity> data;
+    private ExpDetailAdapter adapter;
+
+    @Override
+    public void onNewBundle(Bundle args) {
+        super.onNewBundle(args);
+        data.clear();
+        data.addAll(new ExpDetailConvert().convert());
+        adapter.notifyDataSetChanged();
+    }
 
     public static ExpDelegate getInstance() {
 
@@ -47,11 +57,10 @@ public class ExpDelegate extends ResumeDelegate implements IExpInfoClickListener
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_exp_add:
-                start(new ExpInfoDelegate());
+                start(new ExpInfoDelegate(),SINGLETASK);
                 break;
             case R.id.icon_exp_back:
-                start(new HomeDelegate(),SINGLETOP);
-
+                start(new HomeDelegate(),SINGLETASK);
                 break;
             default:
                 break;
@@ -69,8 +78,8 @@ public class ExpDelegate extends ResumeDelegate implements IExpInfoClickListener
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.addItemDecoration
                 (BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
-        final List<MultipleItemEntity> data = new ExpDetailConvert().convert();
-        ExpDetailAdapter adapter = new ExpDetailAdapter(data);
+        data = new ExpDetailConvert().convert();
+        adapter = new ExpDetailAdapter(data);
         mRecyclerView.setAdapter(adapter);
 
         adapter.setInfoClickListener(this);

@@ -15,7 +15,7 @@
 
             <com.joanzapata.iconify.widget.IconTextView
                 android:id="@+id/icon_exp_back"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"

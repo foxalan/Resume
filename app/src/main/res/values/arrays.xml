@@ -18,6 +18,22 @@
         <item>计算机应用</item>
         <item>软件工程</item>
     </string-array>
+
+    <string-array name="company">
+        <item>富</item>
+        <item>可</item>
+        <item>视</item>
+    </string-array>
+
+    <string-array name="job">
+        <item>普通员工</item>
+
+    </string-array>
+
+    <string-array name="jobdes">
+        <item>码农</item>
+
+    </string-array>
 </resources>
 
 
