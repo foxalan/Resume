@@ -1,6 +1,5 @@
 package com.example.alan.resume.delegate.edu;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -24,6 +23,11 @@ import java.util.List;
 public class EduDetailAdapter extends MultipleRecyclerAdapter {
 
     private IEduModifyClickListener infoClickListener;
+    private IEduModifyLongClickListener modifyLongClickListener;
+
+    public void setModifyLongClickListener(IEduModifyLongClickListener modifyLongClickListener) {
+        this.modifyLongClickListener = modifyLongClickListener;
+    }
 
     public void setInfoClickListener(IEduModifyClickListener infoClickListener) {
         this.infoClickListener = infoClickListener;
@@ -39,7 +43,7 @@ public class EduDetailAdapter extends MultipleRecyclerAdapter {
 
         switch (holder.getItemViewType()) {
             case ItemType.EDU_DETAIL:
-                Log.e("huiye","===");
+
                 RelativeLayout relativeLayout = holder.getView(R.id.rl_edu_item);
                 relativeLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -47,6 +51,16 @@ public class EduDetailAdapter extends MultipleRecyclerAdapter {
                         if (infoClickListener!=null){
                             infoClickListener.onItemClick((Long) entity.getField(EduItemFields.EDU_ITEM_ID));
                         }
+                    }
+                });
+
+                relativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (modifyLongClickListener!=null){
+                            modifyLongClickListener.onItemClick((Long) entity.getField(EduItemFields.EDU_ITEM_ID));
+                        }
+                        return false;
                     }
                 });
 

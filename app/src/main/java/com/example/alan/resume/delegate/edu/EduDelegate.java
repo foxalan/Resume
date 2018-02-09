@@ -7,10 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.alan.resume.R;
+import com.example.alan.resume.alert.DeleteDialog;
+import com.example.alan.resume.alert.IDeleteItemBack;
+import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.database.EduOpenHelper;
 import com.example.alan.resume.delegate.HomeDelegate;
 import com.example.alan.resume.delegate.edu.detail.EduInfoDelegate;
 import com.example.alan.resume.delegate.edu.modify.EduModifyDelegate;
+import com.example.alan.resume.loading.LatteLoader;
 import com.example.alan.resume.recycler.BaseDecoration;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 
@@ -28,7 +33,7 @@ import butterknife.OnClick;
  * Whether Solve :
  */
 
-public class EduDelegate extends ResumeDelegate implements IEduModifyClickListener {
+public class EduDelegate extends ResumeDelegate implements IEduModifyClickListener{
 
     @BindView(R.id.ryc_edu)
     RecyclerView mRecyclerView;
@@ -67,6 +72,10 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
     @Override
     public void onNewBundle(Bundle args) {
         super.onNewBundle(args);
+        refresh();
+    }
+
+    private void refresh(){
         data.clear();
         data.addAll(new EduDetailConvert().convert());
         adapter.notifyDataSetChanged();
@@ -74,7 +83,7 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
 
     @Override
     public void onBindView() {
-
+        DeleteDialog.createLoading(getContext());
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.addItemDecoration
@@ -83,6 +92,28 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         adapter = new EduDetailAdapter(data);
         mRecyclerView.setAdapter(adapter);
         adapter.setInfoClickListener(this);
+        adapter.setModifyLongClickListener(new IEduModifyLongClickListener() {
+            @Override
+            public void onItemClick(long id) {
+
+                DeleteDialog.showDialog();
+                DeleteDialog.setPosition(id);
+                DeleteDialog.setDeleteItemBack(new IDeleteItemBack() {
+                    @Override
+                    public void delete(long id) {
+                        LatteLoader.showLoading(getContext());
+                        EduOpenHelper.getInstance().delete(id);
+                        Resume.getHandler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                refresh();
+                                LatteLoader.stopLoading();
+                            }
+                        },1000);
+                    }
+                });
+            }
+        });
     }
 
 
@@ -94,4 +125,6 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         eduDelegate.setArguments(bundle);
         start(new EduModifyDelegate());
     }
+
+
 }

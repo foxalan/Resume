@@ -66,5 +66,7 @@ public class ResumeApp extends Application {
 
         //设置字体
         Iconify.with(new FontAwesomeModule());
+
+
     }
 }

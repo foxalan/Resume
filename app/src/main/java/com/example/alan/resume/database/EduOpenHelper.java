@@ -51,4 +51,8 @@ public class EduOpenHelper {
     public void update(EduInfo info){
         DatabaseManager.getInstance().getEducateInfoDao().update(info);
     }
+
+    public void delete(long id){
+        DatabaseManager.getInstance().getEducateInfoDao().deleteByKey(id);
+    }
 }
