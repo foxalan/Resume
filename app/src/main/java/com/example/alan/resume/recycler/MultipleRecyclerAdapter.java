@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.example.alan.resume.R;
 import com.example.alan.resume.application.Resume;
@@ -31,6 +33,12 @@ public class MultipleRecyclerAdapter extends
 
     private ExpItemAdapter expItemAdapter;
     private EduItemAdapter eduInfoAdapter;
+
+    private static final RequestOptions RECYCLER_OPTIONS =
+            new RequestOptions()
+                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .dontAnimate();
 
     protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
@@ -91,8 +99,12 @@ public class MultipleRecyclerAdapter extends
                 String phone = entity.getField(MultipleFields.PHONE);
                 String pic = entity.getField(MultipleFields.PIC);
                 AppCompatImageView imageView = holder.getView(R.id.iv_user);
-                Glide.with(Resume.getApplicationContext()).load(new File(pic))
-                        .into(imageView);
+                if (!"".equals(pic) && pic != null) {
+
+                    Glide.with(Resume.getApplicationContext())
+                            .load(new File(pic))
+                            .into(imageView);
+                }
                 holder.setText(R.id.tv_user_name, name);
                 holder.setText(R.id.tv_user_age, String.valueOf(age));
                 holder.setText(R.id.tv_user_phone, phone);
@@ -101,8 +113,8 @@ public class MultipleRecyclerAdapter extends
                 mTvHead.setText("项目经验");
                 RecyclerView recyclerView1 = holder.getView(R.id.ryc_pro_item);
                 List<ProInfo> proInfoList = entity.getField(MultipleFields.PRO_ALL);
-                Log.e("tang",proInfoList.get(0).toString()+"------------");
-                ProItemAdapter adapter = new ProItemAdapter(proInfoList,Resume.getApplicationContext());
+                Log.e("tang", proInfoList.get(0).toString() + "------------");
+                ProItemAdapter adapter = new ProItemAdapter(proInfoList, Resume.getApplicationContext());
                 recyclerView1.setLayoutManager(new LinearLayoutManager(Resume.getApplicationContext()));
                 recyclerView1.setAdapter(adapter);
                 break;
@@ -110,7 +122,7 @@ public class MultipleRecyclerAdapter extends
                 mTvHead.setText("教育经历");
                 RecyclerView recyclerView = holder.getView(R.id.ryc_edu_item);
                 List<EduInfo> eduInfoList = entity.getField(MultipleFields.EDU_ALL);
-                eduInfoAdapter = new EduItemAdapter(eduInfoList,Resume.getApplicationContext());
+                eduInfoAdapter = new EduItemAdapter(eduInfoList, Resume.getApplicationContext());
                 recyclerView.setLayoutManager(new LinearLayoutManager(Resume.getApplicationContext()));
                 recyclerView.setAdapter(eduInfoAdapter);
                 break;

@@ -76,10 +76,10 @@ public class UserDetailDelegate extends ResumeDelegate {
                     Resume.getHandler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            start(new HomeDelegate(),SINGLETASK);
+                            start(new HomeDelegate(), SINGLETASK);
                             LatteLoader.stopLoading();
                         }
-                    },1000);
+                    }, 1000);
                 }
                 break;
             case R.id.iv_user_icon:
@@ -112,7 +112,7 @@ public class UserDetailDelegate extends ResumeDelegate {
 
     @Override
     public void onBindView() {
-
+        mIconPath = DatabaseManager.getInstance().getUseInfoDao().loadAll().get(0).getMPicPath();
     }
 
     @Override
@@ -125,7 +125,10 @@ public class UserDetailDelegate extends ResumeDelegate {
                 mInputUserPhone.setText(userInfoList.get(0).getMPhone());
                 mInputUserAge.setText(String.valueOf(userInfoList.get(0).getMAge()));
                 mInputUserExp.setText(userInfoList.get(0).getMExperience());
-                Glide.with(getContext()).load(new File(userInfoList.get(0).getMPicPath())).into(mIvUser);
+                String path = userInfoList.get(0).getMPicPath();
+                if (path != null && !"".equals(path)) {
+                    Glide.with(getContext()).load(new File(userInfoList.get(0).getMPicPath())).into(mIvUser);
+                }
             }
         }
     }
