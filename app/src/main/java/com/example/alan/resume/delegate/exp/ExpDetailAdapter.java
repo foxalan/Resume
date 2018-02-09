@@ -1,12 +1,11 @@
 package com.example.alan.resume.delegate.exp;
 
 import android.support.v7.widget.AppCompatTextView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.example.alan.resume.R;
-
+import com.example.alan.resume.delegate.edu.IEduModifyLongClickListener;
 import com.example.alan.resume.recycler.ItemType;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 import com.example.alan.resume.recycler.MultipleRecyclerAdapter;
@@ -26,6 +25,11 @@ import java.util.List;
 public class ExpDetailAdapter extends MultipleRecyclerAdapter {
 
     private IExpInfoClickListener infoClickListener;
+    private IEduModifyLongClickListener modifyLongClickListener;
+
+    public void setModifyLongClickListener(IEduModifyLongClickListener modifyLongClickListener) {
+        this.modifyLongClickListener = modifyLongClickListener;
+    }
 
     public void setInfoClickListener(IExpInfoClickListener infoClickListener) {
         this.infoClickListener = infoClickListener;
@@ -41,14 +45,25 @@ public class ExpDetailAdapter extends MultipleRecyclerAdapter {
         switch (holder.getItemViewType()) {
             case ItemType.EXP_DETAIL:
 
+                final long id = entity.getField(ExpItemFields.EXP_ITEM_ID);
+
                 RelativeLayout relativeLayout = holder.getView(R.id.rl_exp);
                 relativeLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (infoClickListener!=null){
-                            long id = entity.getField(ExpItemFields.EXP_ITEM_ID);
                             infoClickListener.onItemClick(id);
                         }
+                    }
+                });
+
+                relativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (modifyLongClickListener!=null){
+                            modifyLongClickListener.onItemClick(id);
+                        }
+                        return false;
                     }
                 });
 

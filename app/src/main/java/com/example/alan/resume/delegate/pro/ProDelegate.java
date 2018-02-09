@@ -7,10 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.example.alan.resume.R;
+import com.example.alan.resume.alert.DeleteDialog;
+import com.example.alan.resume.alert.IDeleteItemBack;
+import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.database.ProOpenHelper;
 import com.example.alan.resume.delegate.HomeDelegate;
 import com.example.alan.resume.delegate.pro.detail.ProInfoDelegate;
 import com.example.alan.resume.delegate.pro.modify.ProModifyDelegate;
+import com.example.alan.resume.loading.LatteLoader;
 import com.example.alan.resume.recycler.BaseDecoration;
 import com.example.alan.resume.recycler.MultipleItemEntity;
 
@@ -63,6 +68,10 @@ public class ProDelegate extends ResumeDelegate implements IProInfoClickListener
     @Override
     public void onNewBundle(Bundle args) {
         super.onNewBundle(args);
+
+    }
+
+    private void refresh(){
         data.clear();
         data.addAll(new ProDetailConvert().convert());
         adapter.notifyDataSetChanged();
@@ -84,6 +93,27 @@ public class ProDelegate extends ResumeDelegate implements IProInfoClickListener
         adapter = new ProDetailAdapter(data);
         mRecyclerView.setAdapter(adapter);
         adapter.setInfoClickListener(this);
+        adapter.setModifyLongClickListerer(new IProModifyLongClickListerer() {
+            @Override
+            public void onItemClick(long id) {
+                DeleteDialog.showDialog();
+                DeleteDialog.setPosition(id);
+                DeleteDialog.setDeleteItemBack(new IDeleteItemBack() {
+                    @Override
+                    public void delete(long id) {
+                        LatteLoader.showLoading(getContext());
+                        ProOpenHelper.getInstance().delete(id);
+                        Resume.getHandler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                refresh();
+                                LatteLoader.stopLoading();
+                            }
+                        },1000);
+                    }
+                });
+            }
+        });
     }
 
     @Override

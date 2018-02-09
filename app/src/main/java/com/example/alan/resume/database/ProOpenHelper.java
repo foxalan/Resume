@@ -50,4 +50,8 @@ public class ProOpenHelper {
     public void update(ProInfo info){
         DatabaseManager.getInstance().getProjectInfoDao().update(info);
     }
+
+    public void delete(long id){
+        DatabaseManager.getInstance().getProjectInfoDao().deleteByKey(id);
+    }
 }

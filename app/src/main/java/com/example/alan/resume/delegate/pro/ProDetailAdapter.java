@@ -23,6 +23,11 @@ import java.util.List;
 public class ProDetailAdapter extends MultipleRecyclerAdapter {
 
     private IProInfoClickListener infoClickListener;
+    private IProModifyLongClickListerer modifyLongClickListerer;
+
+    public void setModifyLongClickListerer(IProModifyLongClickListerer modifyLongClickListerer) {
+        this.modifyLongClickListerer = modifyLongClickListerer;
+    }
 
     public void setInfoClickListener(IProInfoClickListener infoClickListener) {
         this.infoClickListener = infoClickListener;
@@ -40,14 +45,25 @@ public class ProDetailAdapter extends MultipleRecyclerAdapter {
         switch (holder.getItemViewType()) {
             case ItemType.PRO_DETAIL:
 
+                final long id = entity.getField(ProItemFields.PRO_ITEM_ID);
+
                 RelativeLayout relativeLayout = holder.getView(R.id.rl_pro_item);
                 relativeLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (infoClickListener!=null){
-                            long id = entity.getField(ProItemFields.PRO_ITEM_ID);
                             infoClickListener.onItemClick(id);
                         }
+                    }
+                });
+
+                relativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        if (modifyLongClickListerer!=null){
+                            modifyLongClickListerer.onItemClick(id);
+                        }
+                        return false;
                     }
                 });
 

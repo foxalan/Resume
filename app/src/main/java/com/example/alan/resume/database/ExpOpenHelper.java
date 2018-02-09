@@ -51,4 +51,8 @@ public class ExpOpenHelper {
     public void update(ExpInfo info){
         DatabaseManager.getInstance().getExpDao().update(info);
     }
+
+    public void delete(long id){
+        DatabaseManager.getInstance().getExpDao().deleteByKey(id);
+    }
 }
