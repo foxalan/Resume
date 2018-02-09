@@ -2,6 +2,7 @@ package com.example.alan.resume.delegate.detail;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.AppCompatImageView;
@@ -10,13 +11,17 @@ import android.widget.Button;
 
 import com.bumptech.glide.Glide;
 import com.example.alan.resume.R;
+import com.example.alan.resume.application.Resume;
 import com.example.alan.resume.base.ResumeDelegate;
 import com.example.alan.resume.callback.CallbackManager;
 import com.example.alan.resume.callback.CallbackType;
 import com.example.alan.resume.callback.IGlobalCallback;
 import com.example.alan.resume.database.DatabaseManager;
+import com.example.alan.resume.delegate.HomeDelegate;
 import com.example.alan.resume.entity.UserInfo;
+import com.example.alan.resume.loading.LatteLoader;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,6 +30,7 @@ import butterknife.OnClick;
 /**
  * Function :
  * Modify Date : 2018/2/3
+ *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :
@@ -49,25 +55,31 @@ public class UserDetailDelegate extends ResumeDelegate {
     String mStrUserPhone;
     String mStrUserAge;
     String mStrUserExp;
+    String mIconPath = null;
 
-    @OnClick({R.id.bt_save_user_info,R.id.iv_user_icon})
+    @OnClick({R.id.bt_save_user_info, R.id.iv_user_icon})
     void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_save_user_info:
-                if (checkForm()){
+                if (checkForm()) {
                     //todo
                     UserInfo info = UserInfo.builder()
                             .setId(0)
+                            .setPicPath(mIconPath)
                             .setName(mStrUserName)
                             .setAge(Integer.parseInt(mStrUserAge))
                             .setExperience(mStrUserExp)
                             .setPhone(mStrUserPhone)
                             .build();
                     DatabaseManager.getInstance().getUseInfoDao().update(info);
-                    List<UserInfo> userInfoList = DatabaseManager.getInstance().getUseInfoDao().loadAll();
-                    for (UserInfo info1:userInfoList){
-
-                    }
+                    LatteLoader.showLoading(getContext());
+                    Resume.getHandler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            start(new HomeDelegate(),SINGLETASK);
+                            LatteLoader.stopLoading();
+                        }
+                    },1000);
                 }
                 break;
             case R.id.iv_user_icon:
@@ -75,6 +87,11 @@ public class UserDetailDelegate extends ResumeDelegate {
                         .addCallback(CallbackType.ON_CROP, new IGlobalCallback<Uri>() {
                             @Override
                             public void executeCallback(Uri args) {
+                                String sdcardDir = Environment.getExternalStorageDirectory().getPath();
+                                String dir = sdcardDir + "/" + "crop_image" + "/";
+                                File file = new File(dir);
+                                int size = file.list().length;
+                                mIconPath = dir + file.list()[size - 1];
                                 Glide.with(getContext())
                                         .load(args)
                                         .into(mIvUser);
@@ -108,6 +125,7 @@ public class UserDetailDelegate extends ResumeDelegate {
                 mInputUserPhone.setText(userInfoList.get(0).getMPhone());
                 mInputUserAge.setText(String.valueOf(userInfoList.get(0).getMAge()));
                 mInputUserExp.setText(userInfoList.get(0).getMExperience());
+                Glide.with(getContext()).load(new File(userInfoList.get(0).getMPicPath())).into(mIvUser);
             }
         }
     }

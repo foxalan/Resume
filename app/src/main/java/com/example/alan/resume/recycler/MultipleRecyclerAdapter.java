@@ -1,11 +1,13 @@
 package com.example.alan.resume.recycler;
 
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.example.alan.resume.R;
 import com.example.alan.resume.application.Resume;
@@ -17,6 +19,7 @@ import com.example.alan.resume.entity.EduInfo;
 import com.example.alan.resume.entity.ExpInfo;
 import com.example.alan.resume.entity.ProInfo;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -87,6 +90,9 @@ public class MultipleRecyclerAdapter extends
                 int age = entity.getField(MultipleFields.AGE);
                 String phone = entity.getField(MultipleFields.PHONE);
                 String pic = entity.getField(MultipleFields.PIC);
+                AppCompatImageView imageView = holder.getView(R.id.iv_user);
+                Glide.with(Resume.getApplicationContext()).load(new File(pic))
+                        .into(imageView);
                 holder.setText(R.id.tv_user_name, name);
                 holder.setText(R.id.tv_user_age, String.valueOf(age));
                 holder.setText(R.id.tv_user_phone, phone);

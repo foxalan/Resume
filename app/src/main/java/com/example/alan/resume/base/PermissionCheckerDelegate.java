@@ -91,7 +91,9 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
             switch (requestCode) {
                 case RequestCodes.TAKE_PHOTO:
                     final Uri resultUri = CameraImageBean.getInstance().getPath();
-                    UCrop.of(resultUri, resultUri)
+                    final String pickCropPathCamera = LatteCamera.createCropFile().getPath();
+
+                    UCrop.of(resultUri, Uri.parse(pickCropPathCamera))
                             .withMaxResultSize(400, 400)
                             .start(getContext(), this);
                     break;
