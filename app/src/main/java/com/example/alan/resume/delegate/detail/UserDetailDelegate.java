@@ -1,13 +1,19 @@
 package com.example.alan.resume.delegate.detail;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
 import android.widget.Button;
 
+import com.bumptech.glide.Glide;
 import com.example.alan.resume.R;
 import com.example.alan.resume.base.ResumeDelegate;
+import com.example.alan.resume.callback.CallbackManager;
+import com.example.alan.resume.callback.CallbackType;
+import com.example.alan.resume.callback.IGlobalCallback;
 import com.example.alan.resume.database.DatabaseManager;
 import com.example.alan.resume.entity.UserInfo;
 
@@ -36,6 +42,8 @@ public class UserDetailDelegate extends ResumeDelegate {
     TextInputEditText mInputUserExp;
     @BindView(R.id.bt_save_user_info)
     Button mButtonSave;
+    @BindView(R.id.iv_user_icon)
+    AppCompatImageView mIvUser;
 
     String mStrUserName;
     String mStrUserPhone;
@@ -63,7 +71,16 @@ public class UserDetailDelegate extends ResumeDelegate {
                 }
                 break;
             case R.id.iv_user_icon:
-
+                CallbackManager.getInstance()
+                        .addCallback(CallbackType.ON_CROP, new IGlobalCallback<Uri>() {
+                            @Override
+                            public void executeCallback(Uri args) {
+                                Glide.with(getContext())
+                                        .load(args)
+                                        .into(mIvUser);
+                            }
+                        });
+                startCameraWithCheck();
                 break;
             default:
                 break;

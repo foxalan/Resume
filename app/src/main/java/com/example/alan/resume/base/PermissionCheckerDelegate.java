@@ -22,7 +22,9 @@ import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
 import permissions.dispatcher.OnShowRationale;
 import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
 
+@RuntimePermissions
 public abstract class PermissionCheckerDelegate extends BaseDelegate {
 
     /**
@@ -94,6 +96,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                             .start(getContext(), this);
                     break;
                 case RequestCodes.PICK_PHOTO:
+
                     if (data != null) {
                         final Uri pickPath = data.getData();
                         //从相册选择后需要有个路径存放剪裁过的图片
