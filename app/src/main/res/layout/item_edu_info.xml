@@ -23,7 +23,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/itv_asterisk"
         android:id="@+id/tv_edu_item_title"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/black"
         android:text="湖北大学"
         android:textSize="15sp"
         android:layout_marginStart="6dp"
@@ -39,7 +39,7 @@
         android:layout_centerVertical="true"
         android:text="{fa-chevron-right}"
         android:gravity="center_vertical"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/black"
         android:textSize="15sp" />
 
     <android.support.v7.widget.AppCompatTextView
@@ -49,7 +49,7 @@
         android:layout_toStartOf="@id/itv_to"
         android:textSize="15sp"
         android:id="@+id/tv_edu_item_info_context"
-        android:textColor="@android:color/darker_gray"
+        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

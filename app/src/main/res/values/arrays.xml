@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="schools">
-        <item>湖北大学</item>
         <item>武汉大学</item>
+        <item>武汉理工大学</item>
+        <item>武汉科技大学</item>
+        <item>武汉纺织大学</item>
+        <item>湖北大学</item>
         <item>仙桃职业学校</item>
     </string-array>
+
     <string-array name="school_type">
+        <item>大专</item>
         <item>本科</item>
-        <item>专科</item>
         <item>硕士</item>
+        <item>博士</item>
     </string-array>
+
     <string-array name="pro">
         <item>信息与计算科学</item>
         <item>数理统计</item>
@@ -20,19 +26,19 @@
     </string-array>
 
     <string-array name="company">
-        <item>富</item>
-        <item>可</item>
-        <item>视</item>
+        <item>鸿富锦精密工业有限公司</item>
+        <item>富士康科技集团</item>
     </string-array>
 
     <string-array name="job">
-        <item>普通员工</item>
-
+        <item>产品经理</item>
+        <item>安卓工程师</item>
+        <item>UI设计师</item>
+        <item>人力资源</item>
     </string-array>
 
     <string-array name="jobdes">
         <item>码农</item>
-
     </string-array>
 </resources>
 

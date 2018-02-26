@@ -22,19 +22,20 @@
                 android:layout_alignParentStart="true"
                 android:text="{fa-chevron-left}"
                 android:gravity="center_vertical"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <android.support.v7.widget.AppCompatTextView
+                android:textColor="@android:color/black"
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:text="添加教育经历"
-                android:textColor="@android:color/darker_gray"
                 android:textSize="20sp" />
 
             <android.support.v7.widget.AppCompatTextView
+                android:textColor="@android:color/black"
                 android:gravity="center"
                 android:id="@+id/tv_edu_info_save"
                 android:layout_centerVertical="true"
@@ -43,7 +44,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="保存"
-                android:textColor="@android:color/darker_gray"
                 android:textSize="18sp" />
         </RelativeLayout>
 
