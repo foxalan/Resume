@@ -14,7 +14,6 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 /**
  * Function :
  * Modify Date : 2018/2/1
- *
  * @Author : Alan
  * Issue : TODO
  * Whether Solve :

@@ -5,29 +5,29 @@
     android:orientation="horizontal"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_marginStart="5dp"
     >
 
     <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
+        >
 
         <com.joanzapata.iconify.widget.IconTextView
-            android:layout_gravity="center_horizontal"
-            android:text="{fa-circle-o}"
             android:layout_width="15sp"
-            android:textSize="17sp"
-            android:gravity="center_vertical"
-            android:textColor="@android:color/holo_orange_light"
-            android:layout_height="15dp" />
-        <View
+            android:layout_height="15dp"
             android:layout_gravity="center_horizontal"
-            android:background="@android:color/darker_gray"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"/>
+            android:gravity="center_vertical"
+            android:text="{fa-circle-o}"
+            android:textColor="@android:color/holo_orange_light"
+            android:textSize="17sp" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/darker_gray" />
 
     </LinearLayout>
 

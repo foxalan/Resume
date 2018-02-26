@@ -14,7 +14,7 @@ import me.yokeyword.fragmentation.SupportActivity;
 
 public abstract class ProxyActivity extends SupportActivity {
 
-   public  abstract ResumeDelegate setRootDelegate();
+    public abstract ResumeDelegate setRootDelegate();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

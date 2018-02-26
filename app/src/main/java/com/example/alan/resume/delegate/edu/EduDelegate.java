@@ -116,8 +116,6 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         });
     }
 
-
-
     @Override
     public void onItemClick(long id) {
         Bundle bundle = new Bundle();
@@ -125,6 +123,5 @@ public class EduDelegate extends ResumeDelegate implements IEduModifyClickListen
         eduDelegate.setArguments(bundle);
         start(new EduModifyDelegate());
     }
-
 
 }

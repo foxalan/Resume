@@ -3,6 +3,7 @@ package com.example.alan.resume.camera;
 import android.net.Uri;
 
 /**
+ *
  * Created by 傅令杰
  * 存储一些中间值
  */
