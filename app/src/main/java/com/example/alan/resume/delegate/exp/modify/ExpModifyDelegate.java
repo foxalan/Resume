@@ -16,6 +16,7 @@ import com.example.alan.resume.database.DatabaseManager;
 import com.example.alan.resume.database.ExpOpenHelper;
 import com.example.alan.resume.delegate.edu.detail.IEduInfoClickListener;
 import com.example.alan.resume.delegate.exp.ExpDelegate;
+import com.example.alan.resume.delegate.exp.des.ExpDesDelegate;
 import com.example.alan.resume.delegate.exp.detail.ExpBean;
 import com.example.alan.resume.delegate.exp.detail.ExpInfoAdapter;
 import com.example.alan.resume.entity.ExpInfo;
@@ -76,6 +77,7 @@ public class ExpModifyDelegate extends ResumeDelegate implements IEduInfoClickLi
     }
 
     private void saveInfo() {
+
         expInfo.setStartTime(beanList.get(0).getmContext());
         expInfo.setEndTime(beanList.get(1).getmContext());
         expInfo.setCompany(beanList.get(2).getmContext());
@@ -140,7 +142,7 @@ public class ExpModifyDelegate extends ResumeDelegate implements IEduInfoClickLi
                 .build();
 
         ExpBean des = ExpBean.builder()
-                .setItemType(ItemType.DETAIL_INFO)
+                .setItemType(ItemType.EXP_INFO_DES)
                 .withId(4)
                 .withTitle("工作描述")
                 .withContext(expInfo.getWorkDes())
@@ -187,7 +189,7 @@ public class ExpModifyDelegate extends ResumeDelegate implements IEduInfoClickLi
                 showChooseDialog(listSchoolType, 3);
                 break;
             case 4:
-                showChooseDialog(listPro, 4);
+                start(new ExpDesDelegate(),SINGLETASK);
                 break;
             default:
                 break;

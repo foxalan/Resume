@@ -54,6 +54,7 @@ public class EduInfoAdapter extends BaseMultiItemQuickAdapter<EduBean, BaseViewH
                 helper.setText(R.id.tv_edu_item_title, title);
                 helper.setText(R.id.tv_edu_item_info_context, context);
                 break;
+
             default:
                 break;
         }

@@ -15,7 +15,7 @@
 
             <com.joanzapata.iconify.widget.IconTextView
                 android:textColor="@android:color/black"
-                android:id="@+id/icon_exp_back"
+                android:id="@+id/icon_exp_back_des"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_centerVertical="true"
@@ -30,29 +30,64 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
-                android:text="工作经历"
+                android:text="工作描述"
                 android:textSize="20sp" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:textColor="@android:color/black"
                 android:gravity="center"
-                android:id="@+id/tv_exp_add"
+                android:id="@+id/tv_exp_add_des"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/dp_10"
                 android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="添加"
+                android:text="确定"
                 android:textSize="20sp" />
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/ryc_exp"
+    <RelativeLayout
+        android:background="@android:color/darker_gray"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <RelativeLayout
+            android:background="@android:color/darker_gray"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <android.support.v7.widget.AppCompatEditText
+
+                android:text="aaa"
+                android:gravity="start"
+                android:padding="5dp"
+                android:background="@android:color/white"
+                android:id="@+id/et_exp_des"
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+            </android.support.v7.widget.AppCompatEditText>
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray"
+                android:text="10/1000"
+                android:layout_margin="@dimen/dp_10"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+
+
 </LinearLayout>

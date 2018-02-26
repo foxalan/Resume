@@ -19,5 +19,6 @@ public class ItemType {
     public static final int PRO_DETAIL = 6;
     public static final int EDU_DETAIL = 7;
     public static final int DETAIL_INFO = 8;
+    public static final int EXP_INFO_DES = 9;
 
 }

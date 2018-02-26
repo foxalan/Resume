@@ -140,7 +140,7 @@ public class ExpInfoDelegate extends ResumeDelegate {
                 .withContext("")
                 .build();
         ExpBean pro = ExpBean.builder()
-                .setItemType(ItemType.DETAIL_INFO)
+                .setItemType(ItemType.EXP_INFO_DES)
                 .withId(4)
                 .withTitle("工作描述")
                 .withContext("")
@@ -178,7 +178,8 @@ public class ExpInfoDelegate extends ResumeDelegate {
                         showChooseDialog(listSchoolType, 3);
                         break;
                     case 4:
-                        showChooseDialog(listPro, 4);
+                    //    showChooseDialog(listPro, 4);
+
                         break;
                     default:
                         break;
